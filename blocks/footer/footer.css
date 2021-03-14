@@ -1,0 +1,11 @@
+.footer {
+    max-width: 880px;
+    border: 1px solid blueviolet;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 467px){
+    .footer {
+        max-width: 282px;
+    }
+}

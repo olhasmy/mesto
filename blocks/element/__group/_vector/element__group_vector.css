@@ -1,0 +1,8 @@
+.element__group_vector {
+    transition: opacity 0.3s linear;
+}
+
+.element__group_vector:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

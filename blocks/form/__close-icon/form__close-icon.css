@@ -1,0 +1,9 @@
+.form__close-icon {
+    object-position: center;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    border: 1px salmon solid;
+    background-color: #000000;
+    object-fit: cover;
+}
