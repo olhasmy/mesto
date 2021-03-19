@@ -1,6 +1,5 @@
 .profile {
     max-width: 880px;
-    border: 1px solid green;
     margin: 0 auto;
     padding: 40px 0 50px;
     color: #f1f1f1;
@@ -13,6 +12,6 @@
 @media screen and (max-width: 467px){
     .profile {
         max-width: 282px;
-        padding: 0;
+        padding: 38px 0 36px;
     }
 }

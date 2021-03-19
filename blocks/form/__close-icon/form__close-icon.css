@@ -1,9 +1,26 @@
 .form__close-icon {
-    object-position: center;
-    height: 40px;
+    background-image: url('../../../images/Close Icon (1).png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
     width: 40px;
-    padding: 0;
-    border: 1px salmon solid;
-    background-color: #000000;
-    object-fit: cover;
+    height: 40px;
+    transition: opacity 0.3s linear;
+    position: absolute;
+    right: -50px;
+    top: -50px
+}
+
+.form__close-icon:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 467px) {
+    .form__close-icon {
+        right: 0;
+        width: 26px;
+        height: 26px;
+    }
 }

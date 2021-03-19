@@ -1,10 +1,23 @@
+.header__logo {
+    width: 142px;
+    height: 33px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url('../../../images/logoWhite.png');
+}
+
 .header__logo:hover {
+    background-image: url('../../../images/logoBlack.png');
     cursor: pointer;
     color: #000000;
 }
 
 @media screen and (max-width: 467px){
     .header__logo {
+        width: 104px;
+        height: 25px;
         padding: 0 0 0 27px;
+        max-width: 104px;
     }
 }
