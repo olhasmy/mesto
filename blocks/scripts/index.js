@@ -1,14 +1,14 @@
-let popup = document.querySelector(".edit__form");
-let openPopupBtn = document.querySelector('.profile__info_edit-button');
+let popup = document.querySelector(".popup");
+let openPopupBtn = document.querySelector('.profile__edit-button');
 let closePopupBtns = document.querySelector('.form__close-icon');
 let popupOverlay = document.querySelector('.overlay');
 
 function openPopup() {
-    popup.classList.add('edit__form_visible');
+    popup.classList.add('popup_visible');
 }
 
 function closePopup() {
-    popup.classList.remove('edit__form_visible');
+    popup.classList.remove('popup_visible');
 }
 
 openPopupBtn.addEventListener('click', function () {
@@ -24,7 +24,7 @@ popupOverlay.addEventListener('click', function () {
 });
 
 // Находим форму в DOM
-let formElement = document.querySelector('.edit__form');
+let formElement = document.querySelector('.popup');
 let nameInput = formElement.querySelector('.form__field-name');
 let jobInput = formElement.querySelector('.form__field-job');
 
@@ -32,8 +32,8 @@ let jobInput = formElement.querySelector('.form__field-job');
 // она никуда отправляться не будет
     function formSubmitHandler (evt) {
         evt.preventDefault();
-        let profName = document.querySelector('.profile__info_name');
-        let profJob = document.querySelector('.profile__info_job');
+        let profName = document.querySelector('.profile__name');
+        let profJob = document.querySelector('.profile__job');
         profName.textContent = nameInput.value;
         profJob.textContent = jobInput.value;
         formElement.remove();
