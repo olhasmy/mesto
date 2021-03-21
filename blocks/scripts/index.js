@@ -5,6 +5,7 @@ let popupOverlay = document.querySelector('.overlay');
 
 function openPopup() {
     popup.classList.add('popup_visible');
+    popup.classList.add('popup_visible');
 }
 
 function closePopup() {
@@ -17,9 +18,10 @@ openPopupBtn.addEventListener('click', function () {
 
 closePopupBtns.addEventListener('click', function () {
     closePopup();
+    return popup;
 });
 
-popupOverlay.addEventListener('click', function () {
+popupOverlay.addEventListener('click', function() {
     closePopup();
 });
 
@@ -42,5 +44,3 @@ let jobInput = formElement.querySelector('.form__field-job');
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-
-
