@@ -3,10 +3,12 @@
     font-style: normal;
     font-size: 18px;
     line-height: 22px;
+    margin: 12px 0;
 }
 
 @media screen and (max-width: 467px){
     .profile__info_text {
+        margin: 9px 0 0;
         line-height: 17px;
         font-size: 14px;
     }

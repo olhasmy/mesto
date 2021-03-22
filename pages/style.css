@@ -2,9 +2,11 @@
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/edit__form/edit__form.css);
+@import url(../blocks/edit__form/_visible/edit__form_visible.css);
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__field-one/form__field-one.css);
-@import url(../blocks/form/__field-two/form-field-two.css);
+@import url(../blocks/form/__field/form__field.css);
+@import url(../blocks/form/__field/name/name.css);
+@import url(../blocks/form/__field/job/job.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__close-icon/form__close-icon.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
@@ -13,10 +15,10 @@
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__group/_img/element__group_img.css);
 @import url(../blocks/element/__group/_text/element__group_text.css);
-@import url(../blocks/element/__group/_vector/element__group_vector.css);
+@import url(../blocks/element/__group/_like/element__group_like.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__text/footer__text.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);

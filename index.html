@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,71 +11,74 @@
       <img src="./images/Vector%20(1).png" alt="Логотип Место" class="header__logo">
       <div class="header__line"></div>
   </div>
-  <div class="edit__form">
+
+  <div class="edit__form edit__form_visible ">
       <div class="overlay"></div>
-      <button class="form__close-icon"><img src="./images/Close%20Icon%20(1).png" alt="Крест закрытия окна"></button>
       <div class="form">
+          <button class="form__close-icon"></button>
           <h2 class="form__title">Редактировать профиль</h2>
-          <div class="form__field-one">Жак-Ив Кусто</div>
-          <div class="form__field-two">Исследователь океана</div>
-          <button class="form__submit-button">Сохранить</button>
+          <label><input class="form__field_name" type="text" value="Жак-Ив Кусто"></label>
+          <label><input class="form__field_job" type="text" value="Исследователь океана"></label>
+          <button type="submit" name="button" value="Сохранить" class="form__submit-button"></button>
       </div>
+
   </div>
   <div class="profile">
       <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
       <div class="profile__info">
-          <h2 class="profile__info_title">Жак-Ив Кусто</h2>
-          <button class="profile__info_edit-button"><img src="./images/EditButton.png" alt="Знак записи"></button>
-          <p class="profile__info_text">Исследователь океана</p>
+          <h2 class="profile__info_name">Жак-Ив Кусто</h2>
+          <button class="profile__info_edit-button"></button>
+          <p class="profile__info_job">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"><img src="./images/Add.png" alt="Знак добавления"></button>
+      <button class="profile__add-button"></button>
   </div>
   <div class="elements">
       <div class="element">
           <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевский замок" class="element__group_img">
           <div class="element__group">
               <h2 class="element__group_text">Карачаевск</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <div class="element__group_like"></div>
           </div>
       </div>
       <div class="element">
           <img src="./images/Elbrus.png" alt="Гора Эльбрус" class="element__group_img">
           <div class="element__group">
-              <h2 class="element__group_text">Карачаевск</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <h2 class="element__group_text">Гора Эльбрус</h2>
+              <div class="element__group_like"></div>
           </div>
       </div>
       <div class="element">
           <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__group_img">
           <div class="element__group">
               <h2 class="element__group_text">Домбай</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <div class="element__group_like"></div>
           </div>
       </div>
       <div class="element">
           <img src="./images/Elbrus.png" alt="Гора Эльбурс" class="element__group_img">
           <div class="element__group">
               <h2 class="element__group_text">Гора Эльбрус</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <div class="element__group_like"></div>
           </div>
       </div>
       <div class="element">
           <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__group_img">
           <div class="element__group">
               <h2 class="element__group_text">Домбай</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <div class="element__group_like"></div>
           </div>
       </div>
       <div class="element">
           <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия" class="element__group_img">
           <div class="element__group">
               <h2 class="element__group_text">Карачаево-Черкессия</h2>
-              <img src="./images/Like.png" alt="Лайк" class="element__group_vector">
+              <div class="element__group_like"></div>
           </div>
       </div>
   </div>
   <div class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </div>
+<script src="./blocks/scripts"></script>
 </body>
 </html>

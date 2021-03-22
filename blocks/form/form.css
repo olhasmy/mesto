@@ -1,4 +1,17 @@
 .form {
+    position: relative;
+    max-width: 430px;
+    max-height: 330px;
+    min-width: 282px;
+    min-height: 322px;
     border: 1px solid red;
     background-color: #f1f1f1;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
