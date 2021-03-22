@@ -1,11 +1,10 @@
 .form__close-icon {
-    background-image: url('../../../images/Close Icon (1).png');
     background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
     border: 0;
     width: 40px;
     height: 40px;
+    padding: 0;
+    object-fit: cover;
     transition: opacity 0.3s linear;
     position: absolute;
     right: -50px;

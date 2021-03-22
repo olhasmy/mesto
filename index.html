@@ -8,76 +8,77 @@
 </head>
 <body class="page">
   <header class="header">
-      <div class="header__logo"></div>
-      <div class="header__line"></div>
+      <img src="./images/logoWhite.png" alt="Логотип Место" class="header__logo">
   </header>
 
   <main class="content">
 
-      <div class="profile">
+      <section class="profile">
           <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
           <div class="profile__info">
-              <h2 class="profile__name">Жак-Ив Кусто</h2>
-              <button class="profile__edit-button"></button>
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button"><img src="./images/Edit%20Button.png" alt="Кнопка редактировани"></button>
               <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__add-button"></button>
-      </div>
+          <button class="profile__add-button"><img src="./images/Add%20Button.png" alt="Кнопка добавления"></button>
+      </section>
 
-      <div class="elements">
+      <section class="elements">
           <div class="element">
               <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевский замок" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Карачаевск</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
           <div class="element">
               <img src="./images/Elbrus.png" alt="Гора Эльбрус" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Гора Эльбрус</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
           <div class="element">
               <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Домбай</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
           <div class="element">
               <img src="./images/Elbrus.png" alt="Гора Эльбурс" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Гора Эльбрус</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
           <div class="element">
               <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Домбай</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
           <div class="element">
               <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия" class="element__img">
               <div class="element__group">
                   <h2 class="element__text">Карачаево-Черкессия</h2>
-                  <div class="element__like"></div>
+                  <button class="element__like"><img src="./images/Like.png" alt="Лайк"></button>
               </div>
           </div>
-      </div>
+      </section>
 
       <div class="popup">
           <div class="overlay"></div>
-          <form class="form">
-              <button class="form__close-icon"></button>
+          <div class="form">
+              <button class="form__close-icon"><img src="./images/Close%20Icon%20(1).png" alt="Крестик закрытия окна"></button>
               <h2 class="form__title">Редактировать профиль</h2>
-              <label><input class="form__field-name" type="text" name="name" value="Жак-Ив Кусто"></label>
-              <label><input class="form__field-job" type="text" name="job" value="Исследователь океана"></label>
-              <button class="form__submit-button" type="submit" name="button">Сохранить</button>
-          </form>
+              <form class="input" name="input">
+                <input class="popup__input popup__input_name" type="text" name="name" value="Жак-Ив Кусто">
+                <input class="popup__input popup__input_job" type="text" name="job" value="Исследователь океана">
+                <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
+              </form>
+          </div>
       </div>
 
   </main>

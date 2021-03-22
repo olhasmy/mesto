@@ -27,8 +27,8 @@ popupOverlay.addEventListener('click', function() {
 
 // Находим форму в DOM
 let formElement = document.querySelector('.popup');
-let nameInput = formElement.querySelector('.form__field-name');
-let jobInput = formElement.querySelector('.form__field-job');
+let nameInput = formElement.querySelector('.popup__input_name');
+let jobInput = formElement.querySelector('.popup__input_job');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет

@@ -4,11 +4,10 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/form/form.css);
-@import url(../blocks/form/__field-job/form__field-job.css);
-@import url(../blocks/form/__field-name/form__field-name.css);
+@import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__close-icon/form__close-icon.css);
-@import url(../blocks/form/__submit-button/form__submit-button.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__group/element__group.css);
@@ -20,7 +19,6 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__job/profile__job.css);
