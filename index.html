@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,78 +7,83 @@
     <title>Mesto</title>
 </head>
 <body class="page">
-  <div class="header">
-      <img src="./images/Vector%20(1).png" alt="Логотип Место" class="header__logo">
+  <header class="header">
+      <div class="header__logo"></div>
       <div class="header__line"></div>
-  </div>
+  </header>
 
-  <div class="edit__form edit__form_visible ">
-      <div class="overlay"></div>
-      <div class="form">
-          <button class="form__close-icon"></button>
-          <h2 class="form__title">Редактировать профиль</h2>
-          <label><input class="form__field_name" type="text" value="Жак-Ив Кусто"></label>
-          <label><input class="form__field_job" type="text" value="Исследователь океана"></label>
-          <button type="submit" name="button" value="Сохранить" class="form__submit-button"></button>
+  <main class="content">
+
+      <div class="profile">
+          <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
+          <div class="profile__info">
+              <h2 class="profile__name">Жак-Ив Кусто</h2>
+              <button class="profile__edit-button"></button>
+              <p class="profile__job">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button"></button>
       </div>
 
-  </div>
-  <div class="profile">
-      <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
-      <div class="profile__info">
-          <h2 class="profile__info_name">Жак-Ив Кусто</h2>
-          <button class="profile__info_edit-button"></button>
-          <p class="profile__info_job">Исследователь океана</p>
-      </div>
-      <button class="profile__add-button"></button>
-  </div>
-  <div class="elements">
-      <div class="element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевский замок" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Карачаевск</h2>
-              <div class="element__group_like"></div>
+      <div class="elements">
+          <div class="element">
+              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевский замок" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Карачаевск</h2>
+                  <div class="element__like"></div>
+              </div>
+          </div>
+          <div class="element">
+              <img src="./images/Elbrus.png" alt="Гора Эльбрус" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Гора Эльбрус</h2>
+                  <div class="element__like"></div>
+              </div>
+          </div>
+          <div class="element">
+              <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Домбай</h2>
+                  <div class="element__like"></div>
+              </div>
+          </div>
+          <div class="element">
+              <img src="./images/Elbrus.png" alt="Гора Эльбурс" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Гора Эльбрус</h2>
+                  <div class="element__like"></div>
+              </div>
+          </div>
+          <div class="element">
+              <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Домбай</h2>
+                  <div class="element__like"></div>
+              </div>
+          </div>
+          <div class="element">
+              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия" class="element__img">
+              <div class="element__group">
+                  <h2 class="element__text">Карачаево-Черкессия</h2>
+                  <div class="element__like"></div>
+              </div>
           </div>
       </div>
-      <div class="element">
-          <img src="./images/Elbrus.png" alt="Гора Эльбрус" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Гора Эльбрус</h2>
-              <div class="element__group_like"></div>
-          </div>
+
+      <div class="popup">
+          <div class="overlay"></div>
+          <form class="form">
+              <button class="form__close-icon"></button>
+              <h2 class="form__title">Редактировать профиль</h2>
+              <label><input class="form__field-name" type="text" name="name" value="Жак-Ив Кусто"></label>
+              <label><input class="form__field-job" type="text" name="job" value="Исследователь океана"></label>
+              <button class="form__submit-button" type="submit" name="button">Сохранить</button>
+          </form>
       </div>
-      <div class="element">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Домбай</h2>
-              <div class="element__group_like"></div>
-          </div>
-      </div>
-      <div class="element">
-          <img src="./images/Elbrus.png" alt="Гора Эльбурс" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Гора Эльбрус</h2>
-              <div class="element__group_like"></div>
-          </div>
-      </div>
-      <div class="element">
-          <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Домбай</h2>
-              <div class="element__group_like"></div>
-          </div>
-      </div>
-      <div class="element">
-          <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия" class="element__group_img">
-          <div class="element__group">
-              <h2 class="element__group_text">Карачаево-Черкессия</h2>
-              <div class="element__group_like"></div>
-          </div>
-      </div>
-  </div>
-  <div class="footer">
+
+  </main>
+  <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-  </div>
-<script src="./blocks/scripts"></script>
+  </footer>
+<script src="./blocks/scripts/index.js"></script>
 </body>
 </html>
