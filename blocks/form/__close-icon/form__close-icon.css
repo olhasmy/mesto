@@ -1,14 +1,11 @@
 .form__close-icon {
     background-color: transparent;
-    border: 0;
-    width: 40px;
-    height: 40px;
+    border-style: none;
     padding: 0;
-    object-fit: cover;
     transition: opacity 0.3s linear;
     position: absolute;
-    right: -50px;
-    top: -50px;
+    right: -36px;
+    top: -37px;
 }
 
 .form__close-icon:hover {
@@ -18,8 +15,7 @@
 
 @media screen and (max-width: 467px) {
     .form__close-icon {
-        right: 0;
-        width: 26px;
-        height: 26px;
+        right: 2px;
+        top: -48px;
     }
 }

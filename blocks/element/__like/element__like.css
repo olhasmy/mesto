@@ -1,7 +1,12 @@
 .element__like {
     padding: 0;
     border: none;
+    outline: none;
     transition: opacity 0.3s linear;
+}
+
+.element__like:active {
+
 }
 
 .element__like:hover {
