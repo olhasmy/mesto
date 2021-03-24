@@ -2,9 +2,6 @@
     position: relative;
     max-width: 430px;
     background-color: #ffffff;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 39%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -16,6 +13,5 @@
 @media screen and (max-width: 647px){
     .form {
         max-width: 282px;
-        top: 47%;
     }
 }
