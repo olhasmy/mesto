@@ -1,6 +1,6 @@
 .form__img {
-    max-width: none;
-    max-height: 540px;
+    max-width: 75vw;
+    max-height: 75vh;
 }
 
 @media screen and (max-width: 647px) {
