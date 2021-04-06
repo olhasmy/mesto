@@ -3,10 +3,7 @@
     max-width: 430px;
     background-color: #ffffff;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    justify-content: center;
 }
 
 @media screen and (max-width: 647px){

@@ -23,61 +23,51 @@
           <button aria-label="Add" type="button" class="profile__add-button"><img src="./images/Addbutton.svg" alt="Кнопка добавления"></button>
       </section>
 
-      <section class="elements">
-          <div class="element">
-              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевский замок" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Карачаевск</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+      <div class="elements">
+          <template class="element">
+              <div class="element__container">
+                  <button aria-label="Trash" type="button" class="element__trash"></button>
+                  <img src="#" alt="#" type="url" class="element__img">
+                  <div class="element__group">
+                      <h2 class="element__text"></h2>
+                      <button aria-label="Like" type="button" class="element__like"></button>
+                  </div>
               </div>
-          </div>
-          <div class="element">
-              <img src="./images/Elbrus.png" alt="Гора Эльбрус" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Гора Эльбрус</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
-              </div>
-          </div>
-          <div class="element">
-              <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Домбай</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
-              </div>
-          </div>
-          <div class="element">
-              <img src="./images/Elbrus.png" alt="Гора Эльбурс" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Гора Эльбрус</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
-              </div>
-          </div>
-          <div class="element">
-              <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Домбай</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
-              </div>
-          </div>
-          <div class="element">
-              <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаево-Черкессия" class="element__img">
-              <div class="element__group">
-                  <h2 class="element__text">Карачаево-Черкессия</h2>
-                  <button aria-label="Like" type="button" class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
-              </div>
-          </div>
-      </section>
+          </template>
+      </div>
 
-      <div class="popup">
+      <div class="popup popup-profile">
           <div class="overlay"></div>
           <div class="form">
-              <button aria-label="Close" type="button" class="form__close-icon"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
               <h2 class="form__title">Редактировать профиль</h2>
-              <form class="input" name="input">
-                <input class="popup__input popup__input_text_name" type="text" name="name" value="Жак-Ив Кусто">
-                <input class="popup__input popup__input_text_job" type="text" name="job" value="Исследователь океана">
-                <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
+              <form class="input input-profile" name="input">
+                  <input class="popup__input popup__input_text_name" type="text" name="name" value="Жак-Ив Кусто">
+                  <input class="popup__input popup__input_text_job" type="text" name="job" value="Исследователь океана">
+                  <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
               </form>
+          </div>
+      </div>
+
+      <div class="popup popup-create">
+          <div class="overlay"></div>
+          <div class="form">
+              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+              <h2 class="form__title">Новое место</h2>
+              <form class="input input-create" name="input">
+                  <input class="popup__input popup__input_place_name" type="text" name="name" placeholder="Название">
+                  <input class="popup__input popup__input_place_link" type="url" name="link" placeholder="Ссылка на картинку">
+                  <button class="popup__submit-button popup__submit-button_create" type="submit" name="button">Создать</button>
+              </form>
+          </div>
+      </div>
+
+      <div class="popup popup-img">
+          <div class="overlay overlay-darker"></div>
+          <div class="form form-zoom">
+              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+              <img src="#" alt="#" class="form__img">
+              <h2 class="form__title form__title_zoom"></h2>
           </div>
       </div>
 
