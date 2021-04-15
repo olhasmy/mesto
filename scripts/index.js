@@ -24,18 +24,33 @@ const addCardBtn = document.querySelector('.popup__submit-button_create');
 //Слой
 const popupOverlay = document.querySelectorAll('.overlay');
 
+const cardNameInput = document.querySelector('.popup__input_place_name');
+const cardImgInput = document.querySelector('.popup__input_place_link');
+
+//Функция закрытия по ESC
+function closeEsc(e) {
+    if (e.key === 'Escape') {
+        closePopup();
+    }
+}
+
 function openProfilePopup() {
     popupProfile.classList.add('popup_visible');
+    document.addEventListener('keydown', closeEsc);
 }
 
 function openCreatePopup() {
     popupCreate.classList.add('popup_visible');
+    cardNameInput.value = '';
+    cardImgInput.value = '';
+    document.addEventListener('keydown', closeEsc);
 }
 
 function closePopup() {
     popupProfile.classList.remove('popup_visible');
     popupCreate.classList.remove('popup_visible');
     popupImg.classList.remove('popup_visible');
+    document.removeEventListener('keydown', closeEsc);
 }
 
 function formSubmitHandler (evt) {
@@ -55,7 +70,7 @@ function createCards(initialCards) {
 
     const removeCard = card.querySelector('.element__trash');
     removeCard.addEventListener('click', function (){
-            card.remove()
+        card.remove()
     });
 
     const likeBtn = card.querySelector('.element__like');
@@ -66,20 +81,19 @@ function createCards(initialCards) {
     const elemImg = card.querySelector('.element__img');
     const formImgZoom = document.querySelector('.form__img');
     const formTitleZoom = document.querySelector('.form__title_zoom');
+    
     elemImg.addEventListener('click', function openImgPopup() {
         popupImg.classList.add('popup_visible');
         formImgZoom.src = initialCards.link;
         formTitleZoom.textContent = initialCards.name;
+        document.addEventListener('keydown', closeEsc); 
     });
     return card;
 }
 
-//создание карточек
-function createCardSubmit(e){
-    e.preventDefault();
+//Создание карточек
+function createCardSubmit(){
     const inputCreateForm = document.querySelector('.input-create');
-    const cardNameInput = document.querySelector('.popup__input_place_name');
-    const cardImgInput = document.querySelector('.popup__input_place_link');
     const elementCard = createCards({name: cardNameInput.value, link: cardImgInput.value});
     elementContainer.prepend(elementCard);
     inputCreateForm.reset();

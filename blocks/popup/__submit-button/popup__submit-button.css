@@ -9,9 +9,8 @@
     background-color: #000000;
     color: #ffffff;
     transition: opacity 0.3s linear;
-    margin: 0 auto 37px;
+    margin: 18px auto 37px;
     padding: 0;
-    border-style: none;
     border-radius: 2px;
 }
 
@@ -23,7 +22,7 @@
 @media screen and (max-width: 647px) {
     .popup__submit-button {
         max-width: 238px;
-        margin: 0 auto 25px;
+        margin: 15px auto 25px;
         font-size: 14px;
         line-height: 17px;
     }
