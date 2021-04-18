@@ -13,9 +13,8 @@
 @import url(../blocks/form/__title/_zoom/form__title_zoom.css);
 @import url(../blocks/form/__close-icon/form__close-icon.css);
 @import url(../blocks/form/__img/form__img.css);
-@import url(../blocks/form/-zoom/form-zoom.css);
+@import url(../blocks/form/_type_show-image/form_type_show-image.css);
 @import url(../blocks/overlay/overlay.css);
-@import url(../blocks/overlay/-darker/overlay-darker.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__container/element__container.css);
 @import url(../blocks/element/__group/element__group.css);

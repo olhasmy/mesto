@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./pages/style.css">
+    <link rel="stylesheet" type="text/css" href="pages/index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -17,7 +17,7 @@
           <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
           <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button aria-label="Edit" type="button" class="profile__edit-button"><img src="./images/Editbutton.svg" alt="Кнопка редактировани"></button>
+              <button type="button" class="profile__edit-button"><img src="./images/Editbutton.svg" alt="Кнопка редактировани"></button>
               <p class="profile__job">Исследователь океана</p>
           </div>
           <button aria-label="Add" type="button" class="profile__add-button"><img src="./images/Addbutton.svg" alt="Кнопка добавления"></button>
@@ -36,12 +36,12 @@
           </template>
       </div>
 
-      <div class="popup popup-profile">
+      <div class="popup popup_type_edit-profile">
           <div class="overlay"></div>
           <div class="form">
               <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
               <h2 class="form__title">Редактировать профиль</h2>
-              <form class="input input-profile" name="input" novalidate>
+              <form class="input input_type_edit-profile" name="input" novalidate>
                   <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
                   <span id="popup__input_text_name--error"></span>
                   <input id="popup__input_text_job" required minlength="2" maxlength="200" class="popup__input popup__input_text_job" type="text" name="profile-job" value="Исследователь океана" placeholder="О себе">
@@ -51,12 +51,12 @@
           </div>
       </div>
 
-      <div class="popup popup-create">
+      <div class="popup popup_type_add-card">
           <div class="overlay"></div>
           <div class="form">
               <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
               <h2 class="form__title">Новое место</h2>
-              <form class="input input-create" name="input" novalidate>
+              <form class="input input_type_add-card" name="input" novalidate>
                   <input id="popup__input_place_name" required minlength="2" maxlength="30" class="popup__input popup__input_place_name" type="text" name="card-name" placeholder="Название">
                   <span id="popup__input_place_name--error"></span>
                   <input id="popup__input_place_link" required class="popup__input popup__input_place_link" type="url" name="card-link" placeholder="Ссылка на картинку">
@@ -66,9 +66,9 @@
           </div>
       </div>
 
-      <div class="popup popup-img">
-          <div class="overlay overlay-darker"></div>
-          <div class="form form-zoom">
+      <div class="popup popup_type_show-image">
+          <div class="overlay"></div>
+          <div class="form form_type_show-image">
               <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
               <img src="#" alt="#" class="form__img">
               <h2 class="form__title form__title_zoom"></h2>
