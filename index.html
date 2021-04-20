@@ -7,80 +7,80 @@
     <title>Mesto</title>
 </head>
 <body class="page">
-  <header class="header">
-      <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
-  </header>
+<header class="header">
+    <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
+</header>
 
-  <main class="content">
+<main class="content">
 
-      <section class="profile">
-          <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
-          <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button type="button" class="profile__edit-button"><img src="./images/Editbutton.svg" alt="Кнопка редактировани"></button>
-              <p class="profile__job">Исследователь океана</p>
-          </div>
-          <button aria-label="Add" type="button" class="profile__add-button"><img src="./images/Addbutton.svg" alt="Кнопка добавления"></button>
-      </section>
+    <section class="profile">
+        <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
+        <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button"><img src="./images/Editbutton.svg" alt="Кнопка редактировани"></button>
+            <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button aria-label="Add" type="button" class="profile__add-button"><img src="./images/Addbutton.svg" alt="Кнопка добавления"></button>
+    </section>
 
-      <div class="elements">
-          <template class="element">
-              <div class="element__container">
-                  <button aria-label="Trash" type="button" class="element__trash"></button>
-                  <img src="#" alt="#" type="url" class="element__img">
-                  <div class="element__group">
-                      <h2 class="element__text"></h2>
-                      <button aria-label="Like" type="button" class="element__like"></button>
-                  </div>
-              </div>
-          </template>
-      </div>
+    <div class="elements">
+        <template class="element">
+            <div class="element__container">
+                <button aria-label="Trash" type="button" class="element__trash"></button>
+                <img src="#" alt="#" type="url" class="element__img">
+                <div class="element__group">
+                    <h2 class="element__text"></h2>
+                    <button aria-label="Like" type="button" class="element__like"></button>
+                </div>
+            </div>
+        </template>
+    </div>
 
-      <div class="popup popup_type_edit-profile">
-          <div class="overlay"></div>
-          <div class="form">
-              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
-              <h2 class="form__title">Редактировать профиль</h2>
-              <form class="input input_type_edit-profile" name="input" novalidate>
-                  <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
-                  <span id="popup__input_text_name--error"></span>
-                  <input id="popup__input_text_job" required minlength="2" maxlength="200" class="popup__input popup__input_text_job" type="text" name="profile-job" value="Исследователь океана" placeholder="О себе">
-                  <span id="popup__input_text_job--error"></span>
-                  <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
-              </form>
-          </div>
-      </div>
+    <div class="popup popup_type_edit-profile">
+        <div class="overlay"></div>
+        <div class="form">
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <h2 class="form__title">Редактировать профиль</h2>
+            <form class="input input_type_edit-profile" name="input" novalidate>
+                <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
+                <span id="popup__input_text_name--error"></span>
+                <input id="popup__input_text_job" required minlength="2" maxlength="200" class="popup__input popup__input_text_job" type="text" name="profile-job" value="Исследователь океана" placeholder="О себе">
+                <span id="popup__input_text_job--error"></span>
+                <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
+            </form>
+        </div>
+    </div>
 
-      <div class="popup popup_type_add-card">
-          <div class="overlay"></div>
-          <div class="form">
-              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
-              <h2 class="form__title">Новое место</h2>
-              <form class="input input_type_add-card" name="input" novalidate>
-                  <input id="popup__input_place_name" required minlength="2" maxlength="30" class="popup__input popup__input_place_name" type="text" name="card-name" placeholder="Название">
-                  <span id="popup__input_place_name--error"></span>
-                  <input id="popup__input_place_link" required class="popup__input popup__input_place_link" type="url" name="card-link" placeholder="Ссылка на картинку">
-                  <span id="popup__input_place_link--error"></span>
-                  <button class="popup__submit-button popup__submit-button_create" type="submit" name="button">Создать</button>
-              </form>
-          </div>
-      </div>
+    <div class="popup popup_type_add-card">
+        <div class="overlay"></div>
+        <div class="form">
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <h2 class="form__title">Новое место</h2>
+            <form class="input input_type_add-card" name="input" novalidate>
+                <input id="popup__input_place_name" required minlength="2" maxlength="30" class="popup__input popup__input_place_name" type="text" name="card-name" placeholder="Название">
+                <span id="popup__input_place_name--error"></span>
+                <input id="popup__input_place_link" required class="popup__input popup__input_place_link" type="url" name="card-link" placeholder="Ссылка на картинку">
+                <span id="popup__input_place_link--error"></span>
+                <button class="popup__submit-button popup__submit-button_create" type="submit" name="button">Создать</button>
+            </form>
+        </div>
+    </div>
 
-      <div class="popup popup_type_show-image">
-          <div class="overlay"></div>
-          <div class="form form_type_show-image">
-              <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
-              <img src="#" alt="#" class="form__img">
-              <h2 class="form__title form__title_zoom"></h2>
-          </div>
-      </div>
+    <div class="popup popup_type_show-image">
+        <div class="overlay"></div>
+        <div class="form form_show-image">
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <img src="#" alt="#" class="form__img">
+            <h2 class="form__title form__title_zoom"></h2>
+        </div>
+    </div>
 
-  </main>
-  <footer class="footer">
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-  </footer>
-  <script src="./scripts/validate.js"></script>
-  <script src="./scripts/initial-сards.js"></script>
-  <script src="./scripts/index.js"></script>
+</main>
+<footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+</footer>
+<script src="./scripts/validate.js"></script>
+<script src="./scripts/initial-сards.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

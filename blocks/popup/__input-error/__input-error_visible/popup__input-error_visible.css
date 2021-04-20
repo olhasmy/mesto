@@ -1,4 +1,4 @@
-.popup__error_visible {
+.popup__input-error_visible {
     display: inline-block;
     max-width: 358px;
     text-align: left;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 647px){
-    .popup__error_visible {
+    .popup__input-error_visible {
         max-width: 238px;
     }
 }

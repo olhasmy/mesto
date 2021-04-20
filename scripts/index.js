@@ -1,4 +1,5 @@
 //ПОПАПЫ
+const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupCreate = document.querySelector('.popup_type_add-card');
 const popupImg = document.querySelector('.popup_type_show-image');
@@ -32,6 +33,15 @@ const formImgZoom = document.querySelector('.form__img');
 const formTitleZoom = document.querySelector('.form__title_zoom');
 const inputCreateForm = document.querySelector('.input_type_add-card');
 
+const validationConfig = {
+    formSelector: '.input',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input-error',
+    errorClass: 'popup__input-error_visible',
+};
+
 //Функция закрытия по ESC
 function closeEsc(e) {
     if (e.key === 'Escape') {
@@ -57,14 +67,12 @@ function closeByOverlay() {
 function openPopup(popup) {
     popup.classList.add('popup_visible');
     document.addEventListener('keydown', closeEsc);
-    document.addEventListener('click', closeByOverlay);
 }
 
 //Закрытие попапа
 function closePopup(popup) {
     popup.classList.remove('popup_visible');
     document.removeEventListener('keydown', closeEsc);
-    document.removeEventListener('click', closeByOverlay);
 }
 
 //Редактирование профиля
@@ -120,14 +128,14 @@ initialCards.forEach(function(cardData){
 
 createCardBtn.addEventListener('click', function (){
     openPopup(popupCreate);
-    addCardBtn.classList.add('popup__submit-button_disabled');
-    addCardBtn.disabled = true;
+    addCardBtn.classList.add(enableValidation.inactiveButtonClass);
+    enableValidation(validationConfig);
 });
 
 addCardBtn.addEventListener('click', createCardSubmit);
 
 openPopupProfileBtn.addEventListener('click', function (){openPopup(popupProfile);});
 formElement.addEventListener('submit', formSubmitHandlerProfile);
-
+popup.addEventListener('click', closeByOverlay);
 popupProfileClose.addEventListener('click', function (){closePopup(popupProfile);});
 popupEditClose.addEventListener('click', function (){closePopup(popupCreate);});
