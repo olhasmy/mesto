@@ -1,4 +1,5 @@
-import { openPopup, closePopup, popupImg} from './index.js';
+import { openPopup } from './index.js';
+import { formImgZoom, formTitleZoom, popupImg } from './constants.js';
 
 export class Card {
     constructor(cardData) {
@@ -23,16 +24,10 @@ export class Card {
         const likeBtn = this._cardElement.querySelector('.element__like');
         const removeCard = this._cardElement.querySelector('.element__trash');
         const cardImage = this._cardElement.querySelector('.element__img');
-        const popupImgClose = document.querySelector('.form__close-icon_for_img');
 
-        popupImgClose.addEventListener('click', function (){closePopup(popupImg);});
         likeBtn.addEventListener('click', () => this._like());
         removeCard.addEventListener('click', () => this._delete());
         cardImage.addEventListener('click', () => this._preview());
-    }
-
-    _close() {
-
     }
 
     _like() {
@@ -44,8 +39,6 @@ export class Card {
     }
 
     _preview() {
-        const formImgZoom = document.querySelector('.form__img');
-        const formTitleZoom = document.querySelector('.form__title_zoom');
         openPopup(popupImg);
         formImgZoom.src = this._cardData.link;
         formTitleZoom.textContent = this._cardData.name;
