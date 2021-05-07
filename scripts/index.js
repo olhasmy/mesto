@@ -1,6 +1,5 @@
-import { validatingInputsForEditProfile, validatingInputsForCards, initialCards, validationConfig, popupProfile, popupCreate, popupImg, popupProfileClose, popupEditClose, openPopupProfileBtn, formElement, nameInput, jobInput, profJob, profName, popupImgClose, elementContainer, createCardBtn, addCardBtn, popupOverlayList, cardImgInput, cardNameInput, inputCreateForm} from './constants.js';
+import { validatingInputsForEditProfile, validatingInputsForCards, initialCards, popupProfile, popupCreate, popupImg, popupProfileClose, popupEditClose, openPopupProfileBtn, formElement, nameInput, jobInput, profJob, profName, popupImgClose, elementContainer, createCardBtn, addCardBtn, popupOverlayList, cardImgInput, cardNameInput, inputCreateForm} from './constants.js';
 import { Card } from './card.js';
-import { FormValidator } from './formValidator.js';
 
 //Функция закрытия по ESC
 function closeEsc(e) {
@@ -14,7 +13,7 @@ function closeEsc(e) {
 popupOverlayList.forEach(popupOverlay => {
     popupOverlay.addEventListener('click', (e) => {
         e.preventDefault();
-        const openedPopup = document.querySelector('.popup_visible');
+        const openedPopup = popupOverlay.closest('.popup_visible');
         closePopup(openedPopup);
     });
 });
@@ -44,7 +43,7 @@ function createCardSubmit(){
     elementContainer.prepend(createCard({name: cardNameInput.value, link: cardImgInput.value}));
     inputCreateForm.reset();
     closePopup(popupCreate);
-    validatingInputsForCards.enableValidation();
+    validatingInputsForCards.disableSubmitButton();
 }
 
 //Функция создание карточки
