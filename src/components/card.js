@@ -1,8 +1,6 @@
-import { openPopup } from './index.js';
-import { formImgZoom, formTitleZoom, popupImg } from './constants.js';
-
-export class Card {
-    constructor(cardData) {
+export default class Card {
+    constructor(cardData, handleCardClick) {
+        this._handleCardClick = handleCardClick;
         this._cardData = cardData;
         this._cardElement = this._makeElement();
         this._makeEventListeners();
@@ -27,7 +25,7 @@ export class Card {
 
         likeBtn.addEventListener('click', () => this._like());
         removeCard.addEventListener('click', () => this._delete());
-        cardImage.addEventListener('click', () => this._preview());
+        cardImage.addEventListener('click', () => this._handleCardClick());
     }
 
     _like() {
@@ -38,13 +36,7 @@ export class Card {
         this._cardElement.remove();
     }
 
-    _preview() {
-        openPopup(popupImg);
-        formImgZoom.src = this._cardData.link;
-        formTitleZoom.textContent = this._cardData.name;
-    }
-
-    render() {
+    generateCard() {
         return this._cardElement;
     }
 }

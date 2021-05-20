@@ -1,4 +1,5 @@
-import { FormValidator } from './formValidator.js';
+import { FormValidator } from '../components/formValidator.js';
+import Popup from "../components/popup.js";
 
 //КАРТОЧКИ
 export const initialCards = [
@@ -42,34 +43,24 @@ export const popupProfile = document.querySelector('.popup_type_edit-profile');
 export const popupCreate = document.querySelector('.popup_type_add-card');
 export const popupImg = document.querySelector('.popup_type_show-image');
 
-//КНОПКИ ЗАКРТЫИЯ ФОРМ
-export const popupProfileClose = document.querySelector('.form__close-icon_for_profile');
-export const popupEditClose = document.querySelector('.form__close-icon_for_edit');
-
 //ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 export const openPopupProfileBtn = document.querySelector('.profile__edit-button');
 export const formElement = document.querySelector('.input_type_edit-profile');
 export const nameInput = formElement.querySelector('.popup__input_text_name');
 export const jobInput = formElement.querySelector('.popup__input_text_job');
-export const profName = document.querySelector('.profile__name');
-export const profJob = document.querySelector('.profile__job');
-export const popupImgClose = document.querySelector('.form__close-icon_for_img');
+
 
 //СОЗДАНИЕ НОВЫХ КАРТОЧЕК
 export const elementContainer = document.querySelector('.elements');
 export const createCardBtn = document.querySelector('.profile__add-button');
-export const addCardBtn = document.querySelector('.popup__submit-button_create');
-
-//Слои
-export const popupOverlayList = document.querySelectorAll('.overlay');
 
 //Инпуты
 export const cardNameInput = document.querySelector('.popup__input_place_name');
 export const cardImgInput = document.querySelector('.popup__input_place_link');
 export const inputCreateForm = document.querySelector('.input_type_add-card');
 
-export const formImgZoom = document.querySelector('.form__img');
-export const formTitleZoom = document.querySelector('.form__title_zoom');
-
 export const validatingInputsForEditProfile = new FormValidator(validationConfig, formElement);
 export const validatingInputsForCards = new FormValidator(validationConfig, inputCreateForm);
+
+export const popupCreateClass = new Popup(popupCreate);
+export const popupProfileClass = new Popup(popupProfile);

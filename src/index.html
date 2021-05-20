@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="pages/index.css">
     <title>Mesto</title>
 </head>
 <body class="page">
 <header class="header">
-    <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
+    <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo">
 </header>
 
 <main class="content">
 
     <section class="profile">
-        <img src="./images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
+        <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="Фото Жак-Ив Кусто">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"><img src="./images/Editbutton.svg" alt="Кнопка редактировани"></button>
+            <button type="button" class="profile__edit-button"><img src="<%=require('./images/Editbutton.svg')%>" alt="Кнопка редактировани"></button>
             <p class="profile__job">Исследователь океана</p>
         </div>
-        <button aria-label="Add" type="button" class="profile__add-button"><img src="./images/Addbutton.svg" alt="Кнопка добавления"></button>
+        <button aria-label="Add" type="button" class="profile__add-button"><img src="<%=require('./images/Addbutton.svg')%>" alt="Кнопка добавления"></button>
     </section>
 
     <div class="elements">
@@ -39,7 +38,7 @@
     <div class="popup popup_type_edit-profile">
         <div class="overlay"></div>
         <div class="form">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="<%=require('./images/CloseIcon.svg')%>" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Редактировать профиль</h2>
             <form class="input input_type_edit-profile" name="input" novalidate>
                 <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
@@ -54,7 +53,7 @@
     <div class="popup popup_type_add-card">
         <div class="overlay"></div>
         <div class="form">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="<%=require('./images/CloseIcon.svg')%>" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Новое место</h2>
             <form class="input input_type_add-card" name="input" novalidate>
                 <input id="popup__input_place_name" required minlength="2" maxlength="30" class="popup__input popup__input_place_name" type="text" name="card-name" placeholder="Название">
@@ -69,7 +68,7 @@
     <div class="popup popup_type_show-image">
         <div class="overlay"></div>
         <div class="form form_show-image">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="./images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
             <img src="#" alt="#" class="form__img">
             <h2 class="form__title form__title_zoom"></h2>
         </div>
@@ -77,8 +76,7 @@
 
 </main>
 <footer class="footer">
-    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
 </footer>
-<script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
