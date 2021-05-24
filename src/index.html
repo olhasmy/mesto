@@ -37,38 +37,38 @@
 
     <div class="popup popup_type_edit-profile">
         <div class="overlay"></div>
-        <div class="form">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="<%=require('./images/CloseIcon.svg')%>" alt="Крестик закрытия окна"></button>
+        <form class="form" name="form" novalidate>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="<%=require('./images/CloseIcon.svg')%>" id="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Редактировать профиль</h2>
-            <form class="input input_type_edit-profile" name="input" novalidate>
+            <div class="input input_type_edit-profile">
                 <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
                 <span id="popup__input_text_name--error"></span>
                 <input id="popup__input_text_job" required minlength="2" maxlength="200" class="popup__input popup__input_text_job" type="text" name="profile-job" value="Исследователь океана" placeholder="О себе">
                 <span id="popup__input_text_job--error"></span>
                 <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     <div class="popup popup_type_add-card">
         <div class="overlay"></div>
-        <div class="form">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="<%=require('./images/CloseIcon.svg')%>" alt="Крестик закрытия окна"></button>
+        <form class="form" name="form" novalidate>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Новое место</h2>
-            <form class="input input_type_add-card" name="input" novalidate>
+            <div class="input input_type_add-card">
                 <input id="popup__input_place_name" required minlength="2" maxlength="30" class="popup__input popup__input_place_name" type="text" name="card-name" placeholder="Название">
                 <span id="popup__input_place_name--error"></span>
                 <input id="popup__input_place_link" required class="popup__input popup__input_place_link" type="url" name="card-link" placeholder="Ссылка на картинку">
                 <span id="popup__input_place_link--error"></span>
                 <button class="popup__submit-button popup__submit-button_create" type="submit" name="button">Создать</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     <div class="popup popup_type_show-image">
         <div class="overlay"></div>
         <div class="form form_show-image">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="images/CloseIcon.svg" alt="Крестик закрытия окна"></button>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <img src="#" alt="#" class="form__img">
             <h2 class="form__title form__title_zoom"></h2>
         </div>

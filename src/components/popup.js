@@ -1,8 +1,6 @@
 export default class Popup {
     constructor(popup) {
         this._popup = popup;
-        this.closeButton = this._popup.querySelector('.form__close-icon');
-        this.popupOverlay = this._popup.querySelector('.overlay');
     }
 
     open(){
@@ -25,7 +23,10 @@ export default class Popup {
     }
 
     setEventListeners(){
-        this.closeButton.addEventListener('click',()=> this.close());
-        this.popupOverlay.addEventListener('click',()=> this.close());
+        this._popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('form__close') || evt.target.classList.contains('overlay')) {
+                this.close();
+            }
+        });
     }
 }
