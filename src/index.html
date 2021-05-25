@@ -37,8 +37,8 @@
 
     <div class="popup popup_type_edit-profile">
         <div class="overlay"></div>
-        <form class="form" name="form" novalidate>
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="<%=require('./images/CloseIcon.svg')%>" id="form__close" alt="Крестик закрытия окна"></button>
+        <form class="form" name="input" novalidate>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_profile"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Редактировать профиль</h2>
             <div class="input input_type_edit-profile">
                 <input id="popup__input_text_name" required minlength="2" maxlength="40" class="popup__input popup__input_text_name" type="text" name="profile-name" value="Жак-Ив Кусто" placeholder="Имя">
@@ -52,7 +52,7 @@
 
     <div class="popup popup_type_add-card">
         <div class="overlay"></div>
-        <form class="form" name="form" novalidate>
+        <form class="form" name="input" novalidate>
             <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_edit"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Новое место</h2>
             <div class="input input_type_add-card">
@@ -68,7 +68,7 @@
     <div class="popup popup_type_show-image">
         <div class="overlay"></div>
         <div class="form form_show-image">
-            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
+            <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_img"><img src="<%=require('./images/CloseIcon.svg')%>" alt="Крестик закрытия окна"></button>
             <img src="#" alt="#" class="form__img">
             <h2 class="form__title form__title_zoom"></h2>
         </div>

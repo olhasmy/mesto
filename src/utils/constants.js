@@ -1,4 +1,5 @@
 import { FormValidator } from '../components/FormValidator.js';
+import PopupWithImage from "../components/PopupWithImage";
 
 //КАРТОЧКИ
 export const initialCards = [
@@ -51,6 +52,7 @@ export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 
 //СОЗДАНИЕ НОВЫХ КАРТОЧЕК
+export const cardSelector = document.querySelector('.element');
 export const elementContainer = document.querySelector('.elements');
 export const createCardBtn = document.querySelector('.profile__add-button');
 
@@ -61,3 +63,5 @@ export const inputCreateForm = document.querySelector('.input_type_add-card');
 
 export const validatingInputsForEditProfile = new FormValidator(validationConfig, formElement);
 export const validatingInputsForCards = new FormValidator(validationConfig, inputCreateForm);
+
+export const popupWithImg = new PopupWithImage(popupImg);
