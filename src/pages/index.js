@@ -19,8 +19,15 @@ import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import './index.css';
 
+/*
+const Api = new Api({
+    address: '',
+    token: ''
+})
+*/
 //функция создание карточки
 function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
