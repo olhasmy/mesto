@@ -7,6 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
 }
 
 @media screen and (max-width: 467px){
@@ -14,4 +15,9 @@
         max-width: 282px;
         padding: 38px 0 36px;
     }
+}
+
+.profile__avatar-container{
+    position: relative;
+
 }

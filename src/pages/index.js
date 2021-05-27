@@ -14,20 +14,14 @@ import {
     popupWithImg,
     profileName,
     cardSelector,
-    profileJob} from '../utils/constants.js';
+    profileJob, editAvatarBtn, popupAvatar, popupDeleteImg, elementTrashBtn,validatingInputForAvatar,
+} from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import Api from "../components/Api.js";
 import './index.css';
 
-/*
-const Api = new Api({
-    address: '',
-    token: ''
-})
-*/
 //функция создание карточки
 function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
@@ -36,6 +30,7 @@ function createCard(cardData){
     });
     return cardElement.generateCard();
 }
+popupWithImg.setEventListeners();
 
 //помещает карточки из списка
 const cardsList = new Section({
@@ -72,8 +67,22 @@ const popupUserForm = new PopupWithForm(popupProfile,() => {
 });
 popupUserForm.setEventListeners();
 
+//изменеие аватара
+const popupWithAvatar = new PopupWithForm(popupAvatar, ()=> {
+    popupWithAvatar.open();
+})
+popupWithAvatar.setEventListeners();
+
+//удаление карточки
+const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
+    popupWithFormDelete.open();
+});
+popupWithFormDelete.setEventListeners();
+
+//валидации инпутов
 validatingInputsForEditProfile.enableValidation();
 validatingInputsForCards.enableValidation();
+validatingInputForAvatar.enableValidation();
 
 //кнопка редактирования профиля
 openPopupProfileBtn.addEventListener('click', ()=> {
@@ -85,4 +94,16 @@ openPopupProfileBtn.addEventListener('click', ()=> {
 createCardBtn.addEventListener('click', () => {
     validatingInputsForCards.removeErrors();
     addCardWithForm.open();
+});
+
+//кнопка редактирования аватара
+editAvatarBtn.addEventListener('click', () => {
+    validatingInputForAvatar.removeErrors();
+    popupWithAvatar.open();
+});
+
+//кнопка открытия попапа удаления карточки
+elementTrashBtn.addEventListener('click', () => {
+    popupWithFormDelete.open();
+    console.log('bghnjk')
 });

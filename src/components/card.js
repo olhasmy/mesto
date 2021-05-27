@@ -29,11 +29,11 @@ export default class Card {
 
     _makeEventListeners() {
         const likeBtn = this._element.querySelector('.element__like');
-        const removeCard = this._element.querySelector('.element__trash');
         const cardImage = this._element.querySelector('.element__img');
+        const deleteImgBtn = document.querySelector('.popup__submit-button_delete');
 
         likeBtn.addEventListener('click', () => this._like());
-        removeCard.addEventListener('click', () => this._delete());
+        deleteImgBtn.addEventListener('submit', () => this._delete());
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
     }
 
@@ -41,9 +41,10 @@ export default class Card {
         const likeBtn = this._cardElement.querySelector('.element__like');
         likeBtn.classList.toggle('element__like_active');
     }
-    _delete() {
+
+   _delete() {
         this._cardElement.remove();
-    }
+   }
 
     generateCard() {
         return this._cardElement;
