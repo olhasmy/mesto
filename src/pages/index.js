@@ -14,7 +14,8 @@ import {
     popupWithImg,
     profileName,
     cardSelector,
-    profileJob} from '../utils/constants.js';
+    profileJob, editAvatarBtn, popupAvatar,
+} from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -29,6 +30,7 @@ function createCard(cardData){
     });
     return cardElement.generateCard();
 }
+popupWithImg.setEventListeners();
 
 //помещает карточки из списка
 const cardsList = new Section({
@@ -65,6 +67,12 @@ const popupUserForm = new PopupWithForm(popupProfile,() => {
 });
 popupUserForm.setEventListeners();
 
+const popupWithAvatar = new PopupWithForm(popupAvatar, ()=> {
+    popupWithAvatar.open();
+})
+popupWithAvatar.setEventListeners();
+
+
 validatingInputsForEditProfile.enableValidation();
 validatingInputsForCards.enableValidation();
 
@@ -79,3 +87,7 @@ createCardBtn.addEventListener('click', () => {
     validatingInputsForCards.removeErrors();
     addCardWithForm.open();
 });
+
+editAvatarBtn.addEventListener('click', () => {
+    popupWithAvatar.open();
+})

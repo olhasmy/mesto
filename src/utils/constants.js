@@ -1,5 +1,6 @@
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from "../components/PopupWithImage";
+import PopupWithForm from "../components/popupWithForm";
 
 //КАРТОЧКИ
 export const initialCards = [
@@ -42,6 +43,7 @@ export const validationConfig = {
 export const popupProfile = document.querySelector('.popup_type_edit-profile');
 export const popupCreate = document.querySelector('.popup_type_add-card');
 export const popupImg = document.querySelector('.popup_type_show-image');
+export const popupAvatar = document.querySelector('.popup_type_new-avatar')
 
 //ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 export const openPopupProfileBtn = document.querySelector('.profile__edit-button');
@@ -65,3 +67,4 @@ export const validatingInputsForEditProfile = new FormValidator(validationConfig
 export const validatingInputsForCards = new FormValidator(validationConfig, inputCreateForm);
 
 export const popupWithImg = new PopupWithImage(popupImg);
+export const editAvatarBtn = document.querySelector('.profile__avatar-button');
