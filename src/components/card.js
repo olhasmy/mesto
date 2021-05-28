@@ -32,14 +32,22 @@ export default class Card {
         const cardImage = this._element.querySelector('.element__img');
         const deleteImgBtn = document.querySelector('.popup__submit-button_delete');
 
-        likeBtn.addEventListener('click', () => this._like());
+        likeBtn.addEventListener('click', () => {
+            this._like();
+        });
         deleteImgBtn.addEventListener('submit', () => this._delete());
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
     }
 
     _like() {
         const likeBtn = this._cardElement.querySelector('.element__like');
+        const likeCount = this._cardElement.querySelector('.element__like-count');
+
         likeBtn.classList.toggle('element__like_active');
+
+        if(likeBtn.classList.contains('element__like_active')){
+            likeCount.textContent =+1;
+        }
     }
 
    _delete() {

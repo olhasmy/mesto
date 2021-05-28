@@ -1,6 +1,5 @@
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from "../components/PopupWithImage";
-import PopupWithForm from "../components/popupWithForm";
 
 //КАРТОЧКИ
 export const initialCards = [
@@ -51,7 +50,7 @@ export const openPopupProfileBtn = document.querySelector('.profile__edit-button
 export const formElement = document.querySelector('.input_type_edit-profile');
 export const nameInput = formElement.querySelector('.popup__input_text_name');
 export const jobInput = formElement.querySelector('.popup__input_text_job');
-export const avatarInput = formElement.querySelector('.popup__input_avatar_link');
+export const avatarInput = document.querySelector('.popup__input_avatar_link');
 export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 export const profileAvatar = document.querySelector('.profile__avatar');
@@ -75,4 +74,4 @@ export const popupWithImg = new PopupWithImage(popupImg);
 
 export const editAvatarBtn = document.querySelector('.profile__avatar-button');
 
-export const elementTrashBtn = cardSelector.querySelector('.element__trash');
+//export const elementTrashBtn = cardSelector.querySelector('.element__trash');
