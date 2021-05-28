@@ -1,3 +1,5 @@
+import {deleteImgBtn, popupDeleteImg} from "../utils/constants.js";
+
 export default class Card {
     constructor(cardData, cardSelector, handleCardClick) {
         this._handleCardClick = handleCardClick;
@@ -30,12 +32,14 @@ export default class Card {
     _makeEventListeners() {
         const likeBtn = this._element.querySelector('.element__like');
         const cardImage = this._element.querySelector('.element__img');
-        const deleteImgBtn = document.querySelector('.popup__submit-button_delete');
+        const elementTrashBtn = this._element.querySelector('.element__trash');
 
-        likeBtn.addEventListener('click', () => {
-            this._like();
+        //кнопка открытия попапа удаления карточки
+        elementTrashBtn.addEventListener('click', () => {
+            popupDeleteImg.classList.add('popup_visible');
         });
-        deleteImgBtn.addEventListener('submit', () => this._delete());
+
+        likeBtn.addEventListener('click', () => this._like());
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
     }
 

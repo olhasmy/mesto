@@ -21,6 +21,7 @@ import {
     validatingInputForAvatar,
     profileAvatar,
     avatarInput,
+    deleteImgBtn
 } from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
@@ -30,22 +31,16 @@ import './index.css';
 
 //функция создание карточки
 function createCard(cardData){
-    //проверяет инпуты на валидность
     validatingInputsForCards.disableSubmitButton();
-    //если валидны - создает элемент(карточку)
     const cardElement = new Card(cardData, cardSelector,() => {
-        //вешает на каждую обработчик клика - открытие попапа с картинкой при клике
         popupWithImg.open(cardData);
     });
-    //возвращает карточку
     return cardElement.generateCard();
 }
-//вешаем слушатели на попап с картинкой (чтоб можно было закрыть)
 popupWithImg.setEventListeners();
 
 //помещает карточки из списка
 const cardsList = new Section({
-    //берет список карточек
     data: initialCards,
     renderer: (cardData) => {
         const cardElement = createCard(cardData);
@@ -55,12 +50,12 @@ const cardsList = new Section({
 cardsList.renderItems()
 
 //добавляет новые карточки
-const addCardWithForm  = new PopupWithForm(popupCreate,() => {
+const popupWithAddCardForm  = new PopupWithForm(popupCreate,() => {
         const cardElement = createCard({name: cardNameInput.value, link: cardImgInput.value});
         cardsList.addItem(cardElement);
-        addCardWithForm.close();
+        popupWithAddCardForm.close();
 })
-addCardWithForm.setEventListeners();
+popupWithAddCardForm.setEventListeners();
 
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
@@ -69,9 +64,7 @@ function handlePopupEditProfile(){
     const userData = userInfo.getUserInfo();
     nameInput.value = userData.name;
     jobInput.value = userData.job;
-    const userAvatar = userInfo.getUserAvatar();
-    avatarInput.value = userAvatar.avatar;
-    popupUserForm.open();
+    popupWithUserForm.open();
 }
 
 //помещает информацию в попап аватара
@@ -81,22 +74,22 @@ function handlePopupEditAvatar(){
     popupWithAvatar.open();
 }
 
-//изменение информации на странице 
-const popupUserForm = new PopupWithForm(popupProfile,() => {
+//попап изменения информации на странице
+const popupWithUserForm = new PopupWithForm(popupProfile,() => {
     userInfo.setUserInfo({name: nameInput.value,job: jobInput.value});
-    popupUserForm.close();
+    popupWithUserForm.close();
 });
-popupUserForm.setEventListeners();
+popupWithUserForm.setEventListeners();
 
-//изменеие аватара
+//попап изменения аватара
 const popupWithAvatar = new PopupWithForm(popupAvatar, () => {
     userInfo.setUserAvatar({avatar: avatarInput.value})
     popupWithAvatar.close();
 })
 popupWithAvatar.setEventListeners();
 
-//удаление карточки
-const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
+//попап удаления карточки
+export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
     popupWithFormDelete.open();
 });
 popupWithFormDelete.setEventListeners();
@@ -115,7 +108,7 @@ openPopupProfileBtn.addEventListener('click', ()=> {
 //кнопка создания карточки
 createCardBtn.addEventListener('click', () => {
     validatingInputsForCards.removeErrors();
-    addCardWithForm.open();
+    popupWithAddCardForm.open();
 });
 
 //кнопка редактирования аватара
@@ -123,9 +116,10 @@ editAvatarBtn.addEventListener('click', () => {
     validatingInputForAvatar.removeErrors();
     handlePopupEditAvatar();
 });
-/*
-//кнопка открытия попапа удаления карточки
-elementTrashBtn.addEventListener('click', () => {
-    popupWithFormDelete.open();
-    console.log('bghnjk')
-});*/
+
+//кнопка удаления карточки
+deleteImgBtn.addEventListener('click', () => {
+    popupWithFormDelete.close();
+});
+
+

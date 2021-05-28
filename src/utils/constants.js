@@ -56,8 +56,8 @@ export const profileJob = document.querySelector('.profile__job');
 export const profileAvatar = document.querySelector('.profile__avatar');
 
 //СОЗДАНИЕ НОВЫХ КАРТОЧЕК
-export const cardSelector = document.querySelector('.element');
 export const elementContainer = document.querySelector('.elements');
+export const cardSelector = document.querySelector('.element');
 export const createCardBtn = document.querySelector('.profile__add-button');
 
 //Инпуты
@@ -73,5 +73,4 @@ export const validatingInputForAvatar = new FormValidator(validationConfig, inpu
 export const popupWithImg = new PopupWithImage(popupImg);
 
 export const editAvatarBtn = document.querySelector('.profile__avatar-button');
-
-//export const elementTrashBtn = cardSelector.querySelector('.element__trash');
+export const deleteImgBtn = document.querySelector('.popup__submit-button_delete');

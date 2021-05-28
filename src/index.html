@@ -13,8 +13,8 @@
 <main class="content">
 
     <section class="profile">
-        <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="Фото">
         <button class="profile__avatar-button"></button>
+        <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="Фото">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button type="button" class="profile__edit-button"><img src="<%=require('./images/Editbutton.svg')%>" alt="Кнопка редактировани"></button>
@@ -85,7 +85,7 @@
         <form class="form" name="input" novalidate>
             <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_delete"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Вы уверены?</h2>
-            <button class="popup__submit-button popup__submit-button_delete" type="submit" name="button">Да</button>
+            <button class="popup__submit-button popup__submit-button_delete" type="button" name="button">Да</button>
         </form>
     </div>
 
