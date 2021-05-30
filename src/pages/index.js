@@ -71,12 +71,14 @@ function renderInitialCards(cards) {
 //попап изменения информации на странице
 const popupWithUserForm = new PopupWithForm(
     popupProfile,(dataFromPopup) => {
+        popupWithUserForm.infoAboutLoading(true);
         api.updateUserInfo({
             name: dataFromPopup.name,
             about: dataFromPopup.about,
         }).then((dataFromServer) => {
             setInitialUserData(dataFromServer)
         })
+        popupWithUserForm.infoAboutLoading(false);
         popupWithUserForm.close();
     });
 popupWithUserForm.setEventListeners();
@@ -84,16 +86,20 @@ popupWithUserForm.setEventListeners();
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
     popupCreate, () => {
+        popupWithUserForm.infoAboutLoading(true);
         api.addNewCard({
             name: cardNameInput.value,
             link: cardImgInput.value
         })
             .then((cardData)=>{
                 cardsList.addItem(cardData);
+                popupWithUserForm.infoAboutLoading(false);
                 popupWithAddCardForm.close();
+                location.reload();
             })
     })
 popupWithAddCardForm.setEventListeners();
+
 
 //функция создание карточки
 function createCard(cardData){
@@ -125,7 +131,9 @@ function handlePopupEditAvatar(){
 
 //попап изменения аватара
 const popupWithAvatar = new PopupWithForm(popupAvatar, () => {
-    userInfo.setUserAvatar({avatar: avatarInput.value})
+    popupWithUserForm.infoAboutLoading(true);
+    userInfo.setUserAvatar({avatar: avatarInput.value});
+    popupWithUserForm.infoAboutLoading(false);
     popupWithAvatar.close();
 })
 popupWithAvatar.setEventListeners();
