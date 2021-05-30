@@ -41,9 +41,10 @@ const api = new Api({
 Promise.all([
     api.getUserInfo(),
     api.getInitialCards(),
-]).then(([info, cards]) => {
+]).then(([info, cards,userAvatar]) => {
     setInitialUserData(info);
     renderInitialCards(cards);
+    setInitialUserAvatar(userAvatar);
 });
 
 //помещает инфо профиля
@@ -52,7 +53,12 @@ function setInitialUserData(userData) {
         name: userData.name,
         about: userData.about
     })
-    profileAvatar.setAttribute('src', `${userData.avatar}`)
+}
+
+function setInitialUserAvatar(userAvatar) {
+    userInfo.setUserAvatar(
+        profileAvatar.setAttribute('src', `${userAvatar.avatar}`)
+    )
 }
 
 //помещает карточки из списка
@@ -100,6 +106,20 @@ const popupWithAddCardForm  = new PopupWithForm(
     })
 popupWithAddCardForm.setEventListeners();
 
+//попап изменения аватара
+const popupWithAvatar = new PopupWithForm(
+    popupAvatar, () => {
+        popupWithUserForm.infoAboutLoading(true);
+        api.addNewAvatar({
+            avatar: avatarInput.value
+        })
+            .then((userAvatar) =>{
+                userInfo.setUserAvatar(profileAvatar.setAttribute('src', `${userAvatar.avatar}`));
+                popupWithUserForm.infoAboutLoading(false);
+                popupWithAvatar.close();
+            })
+    })
+popupWithAvatar.setEventListeners();
 
 //функция создание карточки
 function createCard(cardData){
@@ -129,14 +149,6 @@ function handlePopupEditAvatar(){
     popupWithAvatar.open();
 }
 
-//попап изменения аватара
-const popupWithAvatar = new PopupWithForm(popupAvatar, () => {
-    popupWithUserForm.infoAboutLoading(true);
-    userInfo.setUserAvatar({avatar: avatarInput.value});
-    popupWithUserForm.infoAboutLoading(false);
-    popupWithAvatar.close();
-})
-popupWithAvatar.setEventListeners();
 /*
 //попап удаления карточки
 export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
