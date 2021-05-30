@@ -7,7 +7,7 @@ export default class UserInfo {
     getUserInfo() {
         this._user = {
             name: this._name.textContent,
-            job: this._job.textContent,
+            about: this._job.textContent,
         }
         return this._user
     }
@@ -19,9 +19,9 @@ export default class UserInfo {
         return this._userAvatar
     }
 
-    setUserInfo(data) {
-        this._name.textContent = data.name;
-        this._job.textContent = data.job;
+    setUserInfo({name, about}) {
+        this._name.textContent = name;
+        this._job.textContent = about;
     }
 
     setUserAvatar(data) {

@@ -1,5 +1,3 @@
-import {deleteImgBtn, popupDeleteImg} from "../utils/constants.js";
-
 export default class Card {
     constructor(cardData, cardSelector, handleCardClick) {
         this._handleCardClick = handleCardClick;
@@ -12,9 +10,9 @@ export default class Card {
     _getTemplate() {
         const cardElement =
             this._cardSelector
-            .content
-            .querySelector('.element__container')
-            .cloneNode(true);
+                .content
+                .querySelector('.element__container')
+                .cloneNode(true);
         return cardElement;
     }
 
@@ -31,34 +29,24 @@ export default class Card {
 
     _makeEventListeners() {
         const likeBtn = this._element.querySelector('.element__like');
+        const removeCard = this._element.querySelector('.element__trash');
         const cardImage = this._element.querySelector('.element__img');
-        const elementTrashBtn = this._element.querySelector('.element__trash');
-
-        //кнопка открытия попапа удаления карточки
-        elementTrashBtn.addEventListener('click', () => {
-            popupDeleteImg.classList.add('popup_visible');
-        });
 
         likeBtn.addEventListener('click', () => this._like());
+        removeCard.addEventListener('click', () => this._delete());
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
     }
 
     _like() {
         const likeBtn = this._cardElement.querySelector('.element__like');
-        const likeCount = this._cardElement.querySelector('.element__like-count');
-
         likeBtn.classList.toggle('element__like_active');
-
-        if(likeBtn.classList.contains('element__like_active')){
-            likeCount.textContent =+1;
-        }
     }
-
-   _delete() {
+    _delete() {
         this._cardElement.remove();
-   }
+    }
 
     generateCard() {
         return this._cardElement;
     }
-}
+} 
+ 
