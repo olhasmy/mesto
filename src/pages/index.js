@@ -41,11 +41,9 @@ const api = new Api({
 Promise.all([
     api.getUserInfo(),
     api.getInitialCards(),
-   // api.addNewCard()
 ]).then(([info, cards]) => {
     setInitialUserData(info);
     renderInitialCards(cards);
-   // renderCard(card);
 });
 
 //помещает инфо профиля
@@ -57,15 +55,17 @@ function setInitialUserData(userData) {
     profileAvatar.setAttribute('src', `${userData.avatar}`)
 }
 
+//помещает карточки из списка
+const cardsList = new Section({
+    renderer: (cardData) => {
+        const cardElement = createCard(cardData);
+        cardsList.addItem(cardElement);
+    }
+}, elementContainer)
+
 //помещает карточки
 function renderInitialCards(cards) {
     cardsList.renderItems(cards);
-}
-
-//помещает карточку
-function renderCard(card){
-    const cardItem = createCard({name: card.name, link: card.link});
-    cardsList.addItem(cardItem);
 }
 
 //попап изменения информации на странице
@@ -83,12 +83,14 @@ popupWithUserForm.setEventListeners();
 
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
-    popupCreate, (card) => {
-        api.addNewCard(card)
+    popupCreate, () => {
+        api.addNewCard({
+            name: cardNameInput.value,
+            link: cardImgInput.value
+        })
             .then((cardData)=>{
-                const cardElement = createCard(cardData);
-                const card = cardElement.generateCard();
-                cardsList.addItem(card);
+                cardsList.addItem(cardData);
+                popupWithAddCardForm.close();
             })
     })
 popupWithAddCardForm.setEventListeners();
@@ -103,14 +105,6 @@ function createCard(cardData){
 }
 popupWithImg.setEventListeners();
 
-
-//помещает карточки из списка
-const cardsList = new Section({
-    renderer: (cardData) => {
-        const cardElement = createCard(cardData);
-        cardsList.addItem(cardElement);
-    }
-}, elementContainer)
 
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
@@ -135,13 +129,13 @@ const popupWithAvatar = new PopupWithForm(popupAvatar, () => {
     popupWithAvatar.close();
 })
 popupWithAvatar.setEventListeners();
-
+/*
 //попап удаления карточки
 export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
     popupWithFormDelete.open();
 });
 popupWithFormDelete.setEventListeners();
-
+*/
 //валидации инпутов
 validatingInputsForEditProfile.enableValidation();
 validatingInputsForCards.enableValidation();
@@ -170,4 +164,3 @@ deleteImgBtn.addEventListener('click', () => {
     popupWithFormDelete.close();
 });
 
-deleteImgBtn.addEventListener('click', () => popupWithAddCardForm.deleteCard());

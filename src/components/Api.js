@@ -62,7 +62,7 @@ export default class Api {
                 console.log(err);
             });
     }
-/*
+
     addNewCard(cardElement) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards`, {
             method: 'POST',
@@ -72,7 +72,7 @@ export default class Api {
             },
             body: JSON.stringify({
                 name: cardElement.name,
-                link: cardElement.link,
+                link: cardElement.link
             })
         })
             .then(res => {
@@ -84,5 +84,5 @@ export default class Api {
             .catch((err) => {
                 console.log(err);
             })
-    }*/
+    }
 }
