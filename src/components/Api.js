@@ -62,8 +62,8 @@ export default class Api {
                 console.log(err);
             });
     }
-
-    addNewCard(card) {
+/*
+    addNewCard(cardElement) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards`, {
             method: 'POST',
             headers: {
@@ -71,8 +71,8 @@ export default class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name: card.name,
-                link: card.link,
+                name: cardElement.name,
+                link: cardElement.link,
             })
         })
             .then(res => {
@@ -84,5 +84,5 @@ export default class Api {
             .catch((err) => {
                 console.log(err);
             })
-    }
+    }*/
 }

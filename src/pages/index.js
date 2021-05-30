@@ -41,11 +41,11 @@ const api = new Api({
 Promise.all([
     api.getUserInfo(),
     api.getInitialCards(),
-    api.addNewCard()
-]).then(([info, cards, card]) => {
+   // api.addNewCard()
+]).then(([info, cards]) => {
     setInitialUserData(info);
     renderInitialCards(cards);
-    renderCard(card);
+   // renderCard(card);
 });
 
 //помещает инфо профиля
@@ -54,7 +54,7 @@ function setInitialUserData(userData) {
         name: userData.name,
         about: userData.about
     })
-   profileAvatar.setAttribute('src', `${userData.avatar}`)
+    profileAvatar.setAttribute('src', `${userData.avatar}`)
 }
 
 //помещает карточки
@@ -71,14 +71,14 @@ function renderCard(card){
 //попап изменения информации на странице
 const popupWithUserForm = new PopupWithForm(
     popupProfile,(dataFromPopup) => {
-    api.updateUserInfo({
-        name: dataFromPopup.name,
-        about: dataFromPopup.about,
-    }).then((dataFromServer) => {
+        api.updateUserInfo({
+            name: dataFromPopup.name,
+            about: dataFromPopup.about,
+        }).then((dataFromServer) => {
             setInitialUserData(dataFromServer)
         })
-    popupWithUserForm.close();
-});
+        popupWithUserForm.close();
+    });
 popupWithUserForm.setEventListeners();
 
 //добавляет новые карточки
@@ -108,8 +108,7 @@ popupWithImg.setEventListeners();
 const cardsList = new Section({
     renderer: (cardData) => {
         const cardElement = createCard(cardData);
-        const card = cardElement.generateCard();
-        cardsList.addItem(card);
+        cardsList.addItem(cardElement);
     }
 }, elementContainer)
 
@@ -118,9 +117,9 @@ const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 //помещение информации в попап профиля
 function handlePopupEditProfile(){
     const userData = userInfo.getUserInfo();
-        nameInput.value = userData.name;
-        jobInput.value = userData.about;
-        popupWithUserForm.open();
+    nameInput.value = userData.name;
+    jobInput.value = userData.about;
+    popupWithUserForm.open();
 }
 
 //помещает информацию в попап аватара

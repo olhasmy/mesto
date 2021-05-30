@@ -20,6 +20,7 @@ export default class Card {
         this._element = this._getTemplate();
         const cardImage = this._element.querySelector('.element__img');
         const cardHeading = this._element.querySelector('.element__text');
+
         cardHeading.textContent = this._cardData.name;
         cardImage.src = this._cardData.link;
         cardImage.alt = this._cardData.name;
