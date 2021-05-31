@@ -1,5 +1,6 @@
 import { FormValidator } from '../components/FormValidator.js';
 import PopupWithImage from "../components/PopupWithImage";
+import UserInfo from "../components/UserInfo";
 
 export const validationConfig = {
     formSelector: '.input',
@@ -43,6 +44,7 @@ export const validatingInputsForCards = new FormValidator(validationConfig, inpu
 export const validatingInputForAvatar = new FormValidator(validationConfig, inputEditAvatar);
 
 export const popupWithImg = new PopupWithImage(popupImg);
+export const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
 export const editAvatarBtn = document.querySelector('.profile__avatar-button');
 export const deleteImgBtn = document.querySelector('.popup__submit-button_delete');

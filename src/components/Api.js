@@ -39,7 +39,7 @@ export default class Api {
                 console.log(err);
             });
     }
-//ничего не обновили
+//обновили информацию
     updateUserInfo(info) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/users/me`, {
             method: 'PATCH',
@@ -62,7 +62,7 @@ export default class Api {
                 console.log(err);
             });
     }
-
+//добавили новую карточку
     addNewCard(cardElement) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards`, {
             method: 'POST',
@@ -72,7 +72,8 @@ export default class Api {
             },
             body: JSON.stringify({
                 name: cardElement.name,
-                link: cardElement.link
+                link: cardElement.link,
+                owner: cardElement.owner
             })
         })
             .then(res => {
@@ -85,7 +86,7 @@ export default class Api {
                 console.log(err);
             })
     }
-
+//сменили аватар
     addNewAvatar(avatarElement){
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/users/me/avatar`, {
             method: 'PATCH',
@@ -94,8 +95,44 @@ export default class Api {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                avatar: avatarElement.link
+                avatar: avatarElement.avatar
             })
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+/*//лайк
+    setLike(user) {
+        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/likes/${user._id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',
+            },
+        })
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }*/
+
+    deleteCard(id) {
+        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',
+            },
         })
             .then(res => {
                 if (res.ok) {

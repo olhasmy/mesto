@@ -16,9 +16,9 @@
         <button class="profile__avatar-button"></button>
         <img class="profile__avatar" alt="Аватар">
         <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-button"><img src="<%=require('./images/Editbutton.svg')%>" alt="Кнопка редактировани"></button>
-            <p class="profile__job">Исследователь океана</p>
+            <p class="profile__job"></p>
         </div>
         <button aria-label="Add" type="button" class="profile__add-button"><img src="<%=require('./images/Addbutton.svg')%>" alt="Кнопка добавления"></button>
     </section>
@@ -43,7 +43,7 @@
             <button aria-label="Close" type="button" class="form__close-icon form__close-icon_for_avatar"><img src="<%=require('./images/CloseIcon.svg')%>" class="form__close" alt="Крестик закрытия окна"></button>
             <h2 class="form__title">Обновить аватар</h2>
             <div class="input input_type_new-avatar">
-                <input id="popup__input_avatar_link" required class="popup__input popup__input_avatar_link" type="url" name="profile-avatar" placeholder="Ссылка на аватар">
+                <input id="popup__input_avatar_link" required class="popup__input popup__input_avatar_link" type="url" name="avatar" placeholder="Ссылка на аватар">
                 <span id="popup__input_avatar_link--error"></span>
                 <button class="popup__submit-button" type="submit" name="button">Сохранить</button>
             </div>

@@ -1,6 +1,12 @@
+import {popupDeleteImg} from "../utils/constants";
+
 export default class Card {
-    constructor(cardData, cardSelector, handleCardClick) {
+    constructor(cardData, cardSelector, handleCardClick, handleDeleteCardClick, owner, currentUser) {
         this._handleCardClick = handleCardClick;
+        this._handleDeleteCardClick = handleDeleteCardClick;
+        this._owner = owner;
+        this._currentUser = currentUser;
+        this._id = cardData.id;
         this._cardData = cardData;
         this._cardSelector = cardSelector;
         this._cardElement = this._makeElement();
@@ -25,6 +31,10 @@ export default class Card {
         cardImage.src = this._cardData.link;
         cardImage.alt = this._cardData.name;
 
+        if(this._owner === this._currentUser) {
+            this._element.querySelector('.element__trash').classList.toggle('element__trash-visible')
+        }
+
         return this._element;
     }
 
@@ -33,15 +43,24 @@ export default class Card {
         const removeCard = this._element.querySelector('.element__trash');
         const cardImage = this._element.querySelector('.element__img');
 
+
+        removeCard.addEventListener('click', () => this._handleDeleteCardClick(this));
+
+
         likeBtn.addEventListener('click', () => this._like());
-        removeCard.addEventListener('click', () => this._delete());
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
+
+    }
+
+    getId(){
+        return this._id;
     }
 
     _like() {
         const likeBtn = this._cardElement.querySelector('.element__like');
         likeBtn.classList.toggle('element__like_active');
     }
+
     _delete() {
         this._cardElement.remove();
     }
