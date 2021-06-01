@@ -34,10 +34,13 @@ const api = new Api({
     }
 });
 
+let userId;
+
 Promise.all([
     api.getUserInfo(),
     api.getInitialCards(),
-]).then(([info, cards,userAvatar]) => {
+]).then(([info, cards]) => {
+    userId = info._id;
     setInitialUserData(info);
     renderInitialCards(cards);
 });
@@ -86,9 +89,8 @@ const popupWithAddCardForm  = new PopupWithForm(
         })
             .then((cardData)=>{
                 cardsList.addItem(cardData);
+                popupWithAddCardForm.close();
             })
-        popupWithAddCardForm.close();
-        location.reload();
     })
 popupWithAddCardForm.setEventListeners();
 
@@ -108,10 +110,10 @@ popupWithAvatar.setEventListeners();
 //функция создание карточки
 function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
-    const cardElement = new Card(cardData, cardSelector, customElements,
+    const cardElement = new Card(cardData, cardSelector, userId,
         () => {popupWithImg.open(cardData)},
         () => {
-        api.deleteCard(cardElement.getId(this))
+        api.deleteCard(cardElement.getId())
             .then(() => cardElement.deleteCard())
             .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
             .finally(()=> console.log('ok'))

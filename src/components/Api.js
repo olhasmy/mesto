@@ -129,8 +129,8 @@ export default class Api {
     }*/
 
     //удаление карточки
-    deleteCard(data) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/${data._id}`, {
+    deleteCard(cardId) {
+        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',

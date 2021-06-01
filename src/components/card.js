@@ -2,7 +2,7 @@ export default class Card {
     constructor(cardData, cardSelector, currentUser, handleCardClick, handleDeleteCardClick) {
         this._handleCardClick = handleCardClick;
         this._handleDeleteCardClick = handleDeleteCardClick;
-        this._owner = ownerId;
+        this._owner = cardData.owner._id;
         this._currentUser = currentUser;
         this._id = cardData._id;
         this._cardData = cardData;
@@ -43,8 +43,17 @@ export default class Card {
 
 
         removeCard.addEventListener('click', () => this._handleDeleteCardClick(this));
-        likeBtn.addEventListener('click', () => this._like());
+        likeBtn.addEventListener('click', () => {
+            if(likeBtn === 0) {
+                this.count()
+            }
+        })
         cardImage.addEventListener('click', () => this._handleCardClick(this._cardData.name,this._cardData.link));
+    }
+
+    count(){
+        this._countElement = this._element.querySelector('.element__like-count');
+        this._countElement.textContent.add += 1
     }
 
     getId(){
@@ -57,6 +66,7 @@ export default class Card {
 
     _like() {
         const likeBtn = this._cardElement.querySelector('.element__like');
+
         likeBtn.classList.toggle('element__like_active');
     }
 

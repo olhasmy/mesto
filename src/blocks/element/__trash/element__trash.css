@@ -13,7 +13,7 @@
     outline: none;
     right: 15px;
     top: 18px;
-    visibility: visible;
+    visibility: hidden;
 }
 
 .element__trash:hover {
