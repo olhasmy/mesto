@@ -1,5 +1,6 @@
 ## Проектная работа "Mesto"
 #### Проектная работа представляет собой лендинг на HTML, CSS и JavaScript.
+### Проектная работа находится на стадии разработки.
 
 Использованные технологии:
 
@@ -13,13 +14,16 @@
 - Добавлена валидность input-ов;
 - Закрытие окон при нажатии на ESC;
 - Созданы классы; 
-- JS разбит на модули, использованы export и import. 
-
-Проект находится на стадии разработки.
+- JS разбит на модули, использованы export и import;
+- Настроен Webpack;
+- Создан класс API.
 
 По окончании разработки планируется добавить функционал: 
 - Счетчик лайков; 
 - Возможность изменения аватара пользователя;
+- Подключение проекта к серверу; 
+- Обработка ошибок после обращения к серверу;
+- Добавлены методы класса API. 
 
 Макеты проектной работы в Figma:
 - [4 Спринт](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1); 
@@ -33,4 +37,13 @@
 - [6 Спринт](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html); 
 - [7 Спринт](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-7/index.html);
 - [8 Спринт](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-8/index.html); 
-- [9 Спринт]( https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-9/index.html).
+- [9 Спринт](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-9/index.html).
+
+
+Для развертывания проекта необходимо:
+- Запустить "GitBash"("Terminal" на Mac OS);
+- Выполнить команду "git clone https://github.com/Gonzoooo/mesto.git";
+- Выполнить команду "cd mesto";
+- Выполнить команду "npm i webpack --save-dev";
+- Выполнить команду "npm run build";
+- Выполнить команду "npm run dev".
