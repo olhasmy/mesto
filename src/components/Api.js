@@ -108,10 +108,11 @@ export default class Api {
                 console.log(err);
             })
     }
-/*//лайк
-    setLike(user) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/likes/${user._id}`, {
-            method: 'PUT',
+
+//лайк
+    setLike(cardId, isLiked) {
+        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/likes/${cardId}`, {
+            method: isLiked? 'DELETE' : 'PUT',
             headers: {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',
             },
@@ -125,10 +126,11 @@ export default class Api {
             .catch((err) => {
                 console.log(err);
             })
-    }*/
+    }
 
-    deleteCard(id) {
-        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/${id}`, {
+    //удаление карточки
+    deleteCard(cardId) {
+        return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',

@@ -8,8 +8,6 @@ import {
     jobInput,
     createCardBtn,
     elementContainer,
-    cardImgInput,
-    cardNameInput,
     popupWithImg,
     userInfo,
     cardSelector,
@@ -26,7 +24,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import './index.css';
 import Api from "../components/Api.js";
 
-let user = null
+
 
 const api = new Api({
     cohort: 'cohort-24',
@@ -36,13 +34,15 @@ const api = new Api({
     }
 });
 
+let userId;
+
 Promise.all([
     api.getUserInfo(),
-    api.getInitialCards()])
-    .then(([info, cards]) => {
+    api.getInitialCards(),
+]).then(([info, cards]) => {
+    userId = info._id;
     setInitialUserData(info);
     renderInitialCards(cards);
-    user = info.data
 });
 
 //помещает инфо профиля
@@ -66,14 +66,14 @@ function renderInitialCards(cards) {
 
 //попап изменения информации на странице
 const popupWithUserForm = new PopupWithForm(
-    popupProfile,(dataFromPopup) => {
+    popupProfile,(data) => {
         popupWithUserForm.infoAboutLoading(true, 'Сохранение...');
         api.updateUserInfo({
-            name: dataFromPopup.name,
-            about: dataFromPopup.about,
+            name: data.name,
+            about: data.about,
         })
-            .then((dataFromServer) => {
-                setInitialUserData(dataFromServer);
+            .then((data) => {
+                setInitialUserData(data);
             })
         popupWithUserForm.infoAboutLoading(false);
         popupWithUserForm.close();
@@ -82,16 +82,15 @@ popupWithUserForm.setEventListeners();
 
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
-    popupCreate, () => {
+    popupCreate, (cardData) => {
         api.addNewCard({
-            name: cardNameInput.value,
-            link: cardImgInput.value,
+            name: cardData.name,
+            link: cardData.link,
         })
             .then((cardData)=>{
                 cardsList.addItem(cardData);
+                popupWithAddCardForm.close();
             })
-        popupWithAddCardForm.close();
-        location.reload();
     })
 popupWithAddCardForm.setEventListeners();
 
@@ -101,27 +100,39 @@ const popupWithAvatar = new PopupWithForm(
         api.addNewAvatar({
             avatar: avatar.avatar
         })
-            .then(() =>{
-                userInfo.setUserAvatar({avatar: avatarInput.value});
+            .then((avatar) =>{
+                userInfo.setUserAvatar(avatar);
             })
         popupWithAvatar.close();
     })
 popupWithAvatar.setEventListeners();
 
+
+function likeCard(card){
+    api.setLike(card.getId(),card.getIsLiked())
+        .then(res => {
+            card.updateLikesInfo(res.likes)
+        })
+}
+
 //функция создание карточки
 function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
-    const cardElement = new Card({...cardData, cardData}, cardSelector,
-        () => { popupWithImg.open(cardData)},
+    const cardElement = new Card(cardData, cardSelector, userId,
         () => {
-            api.deleteCard(cardElement.getId())
-                .then(()=> cardElement.remove())
-                .catch(() => console.log('ошибка при удалении'))
-                .finally(()=> console.log('ok'))
-        });
+        popupWithImg.open(cardData)
+        },
+        () => {
+        api.deleteCard(cardElement.getId())
+            .then(() => cardElement.deleteCard())
+            .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
+            .finally(()=> console.log('ok'))
+        },
+        likeCard);
     return cardElement.generateCard();
 }
 popupWithImg.setEventListeners();
+
 
 //помещение информации в попап профиля
 function handlePopupEditProfile(){
@@ -169,6 +180,5 @@ editAvatarBtn.addEventListener('click', () => {
 
 //кнопка удаления карточки
 deleteImgBtn.addEventListener('click', () => {
-
+    popupWithFormDelete.close();
 });
-
