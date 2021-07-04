@@ -80,20 +80,6 @@ const popupWithUserForm = new PopupWithForm(
     });
 popupWithUserForm.setEventListeners();
 
-//добавляет новые карточки
-const popupWithAddCardForm  = new PopupWithForm(
-    popupCreate, (cardData) => {
-        api.addNewCard({
-            name: cardData.name,
-            link: cardData.link,
-        })
-            .then((cardData)=>{
-                cardsList.addItem(cardData);
-                popupWithAddCardForm.close();
-            })
-    })
-popupWithAddCardForm.setEventListeners();
-
 //попап изменения аватара
 const popupWithAvatar = new PopupWithForm(
     popupAvatar, (avatar) => {
@@ -106,14 +92,6 @@ const popupWithAvatar = new PopupWithForm(
         popupWithAvatar.close();
     })
 popupWithAvatar.setEventListeners();
-
-
-function likeCard(card){
-    api.setLike(card.getId(),card.getIsLiked())
-        .then(res => {
-            card.updateLikesInfo(res.likes)
-        })
-}
 
 //функция создание карточки
 function createCard(cardData){
@@ -128,11 +106,32 @@ function createCard(cardData){
             .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
             .finally(()=> console.log('ok'))
         },
-        likeCard);
+        (card) => {
+        api.setLike(card.getId(),card.getIsLiked())
+            .then(res => {
+                card.updateLikesInfo(res.likes)
+            })
+        });
     return cardElement.generateCard();
 }
 popupWithImg.setEventListeners();
 
+//добавляет новые карточки
+const popupWithAddCardForm  = new PopupWithForm(
+    popupCreate, (cardData) => {
+        api.addNewCard({
+            name: cardData.name,
+            link: cardData.link,
+        })
+            .then((res)=>{
+                const cardElement = createCard(res);
+                cardsList.addItem(cardElement);
+            })
+            .then(()=> {
+                popupWithAddCardForm.close();
+            })
+    })
+popupWithAddCardForm.setEventListeners();
 
 //помещение информации в попап профиля
 function handlePopupEditProfile(){
@@ -180,5 +179,5 @@ editAvatarBtn.addEventListener('click', () => {
 
 //кнопка удаления карточки
 deleteImgBtn.addEventListener('click', () => {
-    popupWithFormDelete.close();
+    popupWithFormDelete.open();
 });
