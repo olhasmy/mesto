@@ -15,8 +15,7 @@ import {
     popupAvatar,
     popupDeleteImg,
     validatingInputForAvatar,
-    avatarInput,
-    deleteImgBtn,
+    avatarInput
 } from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
@@ -75,8 +74,10 @@ const popupWithUserForm = new PopupWithForm(
             .then((data) => {
                 setInitialUserData(data);
             })
-        popupWithUserForm.infoAboutLoading(false);
-        popupWithUserForm.close();
+            .then(()=> {
+                popupWithUserForm.infoAboutLoading(false);
+                popupWithUserForm.close();
+            })
     });
 popupWithUserForm.setEventListeners();
 
@@ -98,19 +99,20 @@ function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
     const cardElement = new Card(cardData, cardSelector, userId,
         () => {
-        popupWithImg.open(cardData)
+            popupWithImg.open(cardData)
         },
         () => {
-        api.deleteCard(cardElement.getId())
-            .then(() => cardElement.deleteCard())
-            .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
-            .finally(()=> console.log('ok'))
+            api.deleteCard(cardElement.getId())
+                .then(() => cardElement.deleteCard())
+                .then(() => popupWithFormDelete.close())
+                .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
+                .finally(()=> console.log('ok'))
         },
         (card) => {
-        api.setLike(card.getId(),card.getIsLiked())
-            .then(res => {
-                card.updateLikesInfo(res.likes)
-            })
+            api.setLike(card.getId(),card.getIsLiked())
+                .then(res => {
+                    card.updateLikesInfo(res.likes)
+                })
         });
     return cardElement.generateCard();
 }
@@ -132,6 +134,10 @@ const popupWithAddCardForm  = new PopupWithForm(
     })
 popupWithAddCardForm.setEventListeners();
 
+//попап удаления карточки
+export const popupWithFormDelete = new PopupWithForm(popupDeleteImg);
+popupWithFormDelete.setEventListeners();
+
 //помещение информации в попап профиля
 function handlePopupEditProfile(){
     const userData = userInfo.getUserInfo();
@@ -146,12 +152,6 @@ function handlePopupEditAvatar(){
     avatarInput.value = userAvatar.avatar;
     popupWithAvatar.open();
 }
-
-//попап удаления карточки
-export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, ()=>{
-    popupWithFormDelete.open();
-});
-popupWithFormDelete.setEventListeners();
 
 //валидации инпутов
 validatingInputsForEditProfile.enableValidation();
@@ -174,9 +174,4 @@ createCardBtn.addEventListener('click', () => {
 editAvatarBtn.addEventListener('click', () => {
     validatingInputForAvatar.removeErrors();
     handlePopupEditAvatar();
-});
-
-//кнопка удаления карточки
-deleteImgBtn.addEventListener('click', () => {
-    popupWithFormDelete.open();
 });

@@ -1,3 +1,5 @@
+import {popupWithFormDelete} from "../pages";
+
 export default class Card {
     constructor(cardData, cardSelector, userId, handleCardClick, handleDeleteCardClick, handleLikeClick) {
         this._handleCardClick = handleCardClick;
@@ -48,10 +50,15 @@ export default class Card {
 
     _makeEventListeners() {
         const likeBtn = this._element.querySelector('.element__like');
-        const removeCard = this._element.querySelector('.element__trash');
+        const deleteBtn = this._element.querySelector('.element__trash');
         const cardImage = this._element.querySelector('.element__img');
+        const submitDeleteBtn = document.querySelector('.popup__submit-button_delete');
 
-        removeCard.addEventListener('click', () => this._handleDeleteCardClick(this));
+        deleteBtn.addEventListener('click', () => {
+            popupWithFormDelete.open();
+            submitDeleteBtn.addEventListener('click', () => this._handleDeleteCardClick());
+        });
+
         likeBtn.addEventListener('click', () => this._like());
         cardImage.addEventListener('click', () => this._handleCardClick(this._card.name,this._card.link));
     }

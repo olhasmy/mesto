@@ -34,8 +34,6 @@ export const cardSelector = document.querySelector('.element');
 export const createCardBtn = document.querySelector('.profile__add-button');
 
 //Инпуты
-export const cardNameInput = document.querySelector('.popup__input_place_name');
-export const cardImgInput = document.querySelector('.popup__input_place_link');
 export const inputCreateForm = document.querySelector('.input_type_add-card');
 export const inputEditAvatar = document.querySelector('.input_type_new-avatar');
 
@@ -47,4 +45,4 @@ export const popupWithImg = new PopupWithImage(popupImg);
 export const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
 export const editAvatarBtn = document.querySelector('.profile__avatar-button');
-export const deleteImgBtn = document.querySelector('.element__trash');
+export const submitDeleteBtn = document.querySelector('.popup__submit-button_delete');
