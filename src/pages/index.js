@@ -119,12 +119,14 @@ popupWithImg.setEventListeners();
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
     popupCreate, (card) => {
+        popupWithAddCardForm.infoAboutLoading(true, 'Сохранение...');
         api.addNewCard(card)
             .then((cardData)=>{
                 const cardElement = createCard(cardData);
                 cardsList.addItem(cardElement, 'prepend');
             })
             .then(()=> {
+                popupWithAddCardForm.infoAboutLoading(false);
                 popupWithAddCardForm.close();
             })
     })
