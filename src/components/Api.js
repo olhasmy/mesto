@@ -73,7 +73,6 @@ export default class Api {
             body: JSON.stringify({
                 name: cardElement.name,
                 link: cardElement.link,
-                owner: cardElement.owner
             })
         })
             .then(res => {

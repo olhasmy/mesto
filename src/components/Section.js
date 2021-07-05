@@ -5,8 +5,12 @@ export default class Section {
         this._container = containerSelector;
     }
 
-    addItem(element) {
-        this._container.append(element);
+    addItem(element, place = 'prepend') {
+        if (place === 'append') {
+            this._container.append(element);
+        } else {
+            this._container.prepend(element);
+        }
     }
 
     renderItems(items) {

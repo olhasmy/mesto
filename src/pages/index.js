@@ -55,7 +55,7 @@ function setInitialUserData(userData) {
 const cardsList = new Section({
     renderer: (cardData) => {
         const cardElement = createCard(cardData);
-        cardsList.addItem(cardElement);
+        cardsList.addItem(cardElement, 'append');
     }
 }, elementContainer)
 
@@ -118,14 +118,11 @@ popupWithImg.setEventListeners();
 
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
-    popupCreate, (cardData) => {
-        api.addNewCard({
-            name: cardData.name,
-            link: cardData.link,
-        })
-            .then((res)=>{
-                const cardElement = createCard(res);
-                cardsList.addItem(cardElement);
+    popupCreate, (card) => {
+        api.addNewCard(card)
+            .then((cardData)=>{
+                const cardElement = createCard(cardData);
+                cardsList.addItem(cardElement, 'prepend');
             })
             .then(()=> {
                 popupWithAddCardForm.close();
