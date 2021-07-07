@@ -42,7 +42,9 @@ Promise.all([
     userId = info._id;
     setInitialUserData(info);
     renderInitialCards(cards);
-});
+}).catch((e) => {
+        console.log(`ошибка при загрузке данных: ${e}`);
+    });
 
 //помещает инфо профиля
 function setInitialUserData(userData) {
@@ -66,7 +68,7 @@ function renderInitialCards(cards) {
 //попап изменения информации на странице
 const popupWithUserForm = new PopupWithForm(
     popupProfile,(data) => {
-        popupWithUserForm.infoAboutLoading(true, 'Сохранение...');
+        popupWithUserForm.renderLoading(true, 'Сохранение...');
         api.updateUserInfo({
             name: data.name,
             about: data.about,
@@ -75,9 +77,14 @@ const popupWithUserForm = new PopupWithForm(
                 setInitialUserData(data);
             })
             .then(()=> {
-                popupWithUserForm.infoAboutLoading(false);
+                popupWithUserForm.renderLoading(false);
+            })
+            .then(()=> {
                 popupWithUserForm.close();
             })
+            .catch((e) => {
+                console.log(`ошибка при изменении данных: ${e}`);
+            });
     });
 popupWithUserForm.setEventListeners();
 
@@ -90,7 +97,12 @@ const popupWithAvatar = new PopupWithForm(
             .then((avatar) =>{
                 userInfo.setUserAvatar(avatar);
             })
-        popupWithAvatar.close();
+            .then(() => {
+                popupWithAvatar.close();
+            })
+            .catch((e) => {
+                console.log(`ошибка при изменении аватара: ${e}`);
+            });
     })
 popupWithAvatar.setEventListeners();
 
@@ -99,20 +111,19 @@ function createCard(cardData){
     validatingInputsForCards.disableSubmitButton();
     const cardElement = new Card(cardData, cardSelector, userId,
         () => {
-            popupWithImg.open(cardData)
+        popupWithImg.open(cardData);
         },
         () => {
-            api.deleteCard(cardElement.getId())
-                .then(() => cardElement.deleteCard())
-                .then(() => popupWithFormDelete.close())
-                .catch((e) => console.log(`ошибка при удалении данных: ${e}`))
-                .finally(()=> console.log('ok'))
+        popupWithFormDelete.open();
         },
         (card) => {
-            api.setLike(card.getId(),card.getIsLiked())
-                .then(res => {
-                    card.updateLikesInfo(res.likes)
-                })
+        api.setLike(card.getId(),card.getIsLiked())
+            .then(res => {
+                card.updateLikesInfo(res.likes)
+            })
+            .catch((e) => {
+                console.log(`ошибка при лайке: ${e}`);
+            });
         });
     return cardElement.generateCard();
 }
@@ -121,21 +132,41 @@ popupWithImg.setEventListeners();
 //добавляет новые карточки
 const popupWithAddCardForm  = new PopupWithForm(
     popupCreate, (card) => {
-        popupWithAddCardForm.infoAboutLoading(true, 'Сохранение...');
+        popupWithAddCardForm.renderLoading(true, 'Сохранение...');
         api.addNewCard(card)
             .then((cardData)=>{
                 const cardElement = createCard(cardData);
                 cardsList.addItem(cardElement, 'prepend');
             })
             .then(()=> {
-                popupWithAddCardForm.infoAboutLoading(false);
+                popupWithAddCardForm.renderLoading(false);
+            })
+            .then(()=> {
                 popupWithAddCardForm.close();
             })
+            .catch((e) => {
+                console.log(`ошибка при добавлении карточки: ${e}`);
+            });
     })
 popupWithAddCardForm.setEventListeners();
 
 //попап удаления карточки
-export const popupWithFormDelete = new PopupWithForm(popupDeleteImg);
+export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, {
+    submit: (cardElement)=> {
+        api.deleteCard(cardElement.getId())
+            .then(() => {
+                cardElement.deleteCard()
+            })
+            .then(() => {
+                popupWithFormDelete.close()
+            })
+            .catch((e) => {
+                console.log(`ошибка при удалении данных: ${e}`)
+            })
+            .finally(()=> {
+                console.log('ok')
+            })
+}});
 popupWithFormDelete.setEventListeners();
 
 //помещение информации в попап профиля

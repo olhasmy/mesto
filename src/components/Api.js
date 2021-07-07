@@ -17,9 +17,6 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 //получили карточки
     getInitialCards() {
@@ -35,9 +32,6 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 //обновили информацию
     updateUserInfo(info) {
@@ -58,9 +52,6 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-            .catch((err) => {
-                console.log(err);
-            });
     }
 //добавили новую карточку
     addNewCard(cardElement) {
@@ -80,9 +71,6 @@ export default class Api {
                     return res.json();
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err);
             })
     }
 //сменили аватар
@@ -122,9 +110,6 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-            .catch((err) => {
-                console.log(err);
-            })
     }
 
     //удаление карточки
@@ -140,9 +125,6 @@ export default class Api {
                     return res.json();
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err);
             })
     }
 }
