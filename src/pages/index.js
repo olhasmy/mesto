@@ -15,7 +15,7 @@ import {
     popupAvatar,
     popupDeleteImg,
     validatingInputForAvatar,
-    avatarInput
+    avatarInput, submitDeleteBtn
 } from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
@@ -115,6 +115,20 @@ function createCard(cardData){
         },
         () => {
         popupWithFormDelete.open();
+        submitDeleteBtn.addEventListener('click', ()=> {
+            api.deleteCard(cardElement.getId())
+                .then(() => {
+                    cardElement.deleteCard()
+                })
+                .then(() => {
+                    popupWithFormDelete.close()
+                })
+                .catch((e) => {
+                    console.log(`ошибка при удалении данных: ${e}`)
+                })
+                .finally(()=> {
+                    console.log('ok')})
+        })
         },
         (card) => {
         api.setLike(card.getId(),card.getIsLiked())
@@ -124,7 +138,7 @@ function createCard(cardData){
             .catch((e) => {
                 console.log(`ошибка при лайке: ${e}`);
             });
-        });
+    });
     return cardElement.generateCard();
 }
 popupWithImg.setEventListeners();
@@ -151,22 +165,7 @@ const popupWithAddCardForm  = new PopupWithForm(
 popupWithAddCardForm.setEventListeners();
 
 //попап удаления карточки
-export const popupWithFormDelete = new PopupWithForm(popupDeleteImg, {
-    submit: (cardElement)=> {
-        api.deleteCard(cardElement.getId())
-            .then(() => {
-                cardElement.deleteCard()
-            })
-            .then(() => {
-                popupWithFormDelete.close()
-            })
-            .catch((e) => {
-                console.log(`ошибка при удалении данных: ${e}`)
-            })
-            .finally(()=> {
-                console.log('ok')
-            })
-}});
+export const popupWithFormDelete = new PopupWithForm(popupDeleteImg);
 popupWithFormDelete.setEventListeners();
 
 //помещение информации в попап профиля

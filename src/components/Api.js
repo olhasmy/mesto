@@ -3,7 +3,16 @@ export default class Api {
         this.token = options.token;
         this.cohort = options.cohort;
     }
-//получили информацию
+
+    _handleResponse(res) {
+        if (res.ok) {
+            return res.json();
+        } else {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+    }
+
+    //получили информацию
     getUserInfo() {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/users/me`, {
             method: 'GET',
@@ -11,14 +20,10 @@ export default class Api {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec'
             }
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
-//получили карточки
+
+    //получили карточки
     getInitialCards() {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards`, {
             method: 'GET',
@@ -26,14 +31,10 @@ export default class Api {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec'
             },
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
-//обновили информацию
+
+    //обновили информацию
     updateUserInfo(info) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/users/me`, {
             method: 'PATCH',
@@ -46,14 +47,10 @@ export default class Api {
                 about: info.about,
             })
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
-//добавили новую карточку
+
+    //добавили новую карточку
     addNewCard(cardElement) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards`, {
             method: 'POST',
@@ -66,14 +63,10 @@ export default class Api {
                 link: cardElement.link,
             })
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
-//сменили аватар
+
+    //сменили аватар
     addNewAvatar(avatarElement){
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/users/me/avatar`, {
             method: 'PATCH',
@@ -85,18 +78,10 @@ export default class Api {
                 avatar: avatarElement.avatar
             })
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            .then(this._handleResponse);
     }
 
-//лайк
+    //лайк
     setLike(cardId, isLiked) {
         return fetch(`https://mesto.nomoreparties.co/v1/${this.cohort}/cards/likes/${cardId}`, {
             method: isLiked? 'DELETE' : 'PUT',
@@ -104,12 +89,7 @@ export default class Api {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',
             },
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
 
     //удаление карточки
@@ -120,11 +100,6 @@ export default class Api {
                 authorization: '0970556a-6f94-4e95-aaf4-193fd780acec',
             },
         })
-            .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
-            })
+            .then(this._handleResponse);
     }
 }
