@@ -15,7 +15,7 @@ import {
     popupAvatar,
     popupDeleteImg,
     validatingInputForAvatar,
-    avatarInput, submitDeleteBtn
+    avatarInput
 } from '../utils/constants.js';
 import Section from "../components/Section.js";
 import Card  from '../components/Card.js';
@@ -114,21 +114,28 @@ function createCard(cardData){
         popupWithImg.open(cardData);
         },
         () => {
+        const popupWithFormDelete = new PopupWithForm(
+            popupDeleteImg,
+            ()=> {
+                popupWithFormDelete.renderLoading(true, 'Удаление...');
+                api.deleteCard(cardElement.getId())
+                    .then(() => {
+                        cardElement.deleteCard();
+                    })
+                    .then(() => {
+                        popupWithFormDelete.renderLoading(false);
+                    })
+                    .then(() => {
+                        popupWithFormDelete.close();
+                    })
+                    .catch((e) => {
+                        console.log(`ошибка при удалении данных: ${e}`)
+                    })
+                    .finally(()=> {
+                        console.log('ok')})
+            });
+        popupWithFormDelete.setEventListeners();
         popupWithFormDelete.open();
-        submitDeleteBtn.addEventListener('click', ()=> {
-            api.deleteCard(cardElement.getId())
-                .then(() => {
-                    cardElement.deleteCard()
-                })
-                .then(() => {
-                    popupWithFormDelete.close()
-                })
-                .catch((e) => {
-                    console.log(`ошибка при удалении данных: ${e}`)
-                })
-                .finally(()=> {
-                    console.log('ok')})
-        })
         },
         (card) => {
         api.setLike(card.getId(),card.getIsLiked())
@@ -163,10 +170,6 @@ const popupWithAddCardForm  = new PopupWithForm(
             });
     })
 popupWithAddCardForm.setEventListeners();
-
-//попап удаления карточки
-export const popupWithFormDelete = new PopupWithForm(popupDeleteImg);
-popupWithFormDelete.setEventListeners();
 
 //помещение информации в попап профиля
 function handlePopupEditProfile(){

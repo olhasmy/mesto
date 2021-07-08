@@ -45,4 +45,3 @@ export const popupWithImg = new PopupWithImage(popupImg);
 export const userInfo = new UserInfo(profileName, profileJob, profileAvatar);
 
 export const editAvatarBtn = document.querySelector('.profile__avatar-button');
-export const submitDeleteBtn = document.querySelector('.popup__submit-button_delete');

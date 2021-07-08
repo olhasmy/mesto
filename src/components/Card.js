@@ -51,7 +51,7 @@ export default class Card {
         const deleteBtn = this._element.querySelector('.element__trash');
         const cardImage = this._element.querySelector('.element__img');
 
-        deleteBtn.addEventListener('click', () => this._handleDeleteCardClick());
+        deleteBtn.addEventListener('click', (e)=>this._handleDeleteCardClick(e));
         likeBtn.addEventListener('click', () => this._like());
         cardImage.addEventListener('click', () => this._handleCardClick(this._card.name,this._card.link));
     }
