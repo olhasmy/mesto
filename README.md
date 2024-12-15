@@ -40,5 +40,5 @@
 - Выполнить команду "npm run build";
 - Выполнить команду "npm run dev".
 
-### [Ссылка на готовый проект](https://gonzoooo.github.io/mesto/)
+### [Ссылка на готовый проект](https://olhasmy.github.io/mesto/)
 
