@@ -30,7 +30,7 @@ export default class Card {
 
         this._cardHeading.textContent = this._card.name;
         this._cardImage.src = this._card.link;
-        this._cardImage.alt = this._card.name;
+        this._cardImage.alt = 'Тут могло быть изображениие: ' + this._card.name + ', но что-то пошло не так';
 
         if(this._owner === this._userId) {
             this._element.querySelector('.element__trash').classList.toggle('element__trash-visible')
@@ -86,5 +86,4 @@ export default class Card {
             this._likeBtn.classList.remove('element__like_active')
         }
     }
-} 
- 
+}

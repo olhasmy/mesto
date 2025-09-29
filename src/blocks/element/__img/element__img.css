@@ -3,8 +3,13 @@
     height: 282px;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
+    display: block;
 }
 
 .element__img:hover {
+    cursor: pointer;
+}
+
+img alt .element__img {
     cursor: pointer;
 }
