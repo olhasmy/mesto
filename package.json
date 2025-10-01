@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gonzoooo/mesto.git"
+    "url": "git+https://github.com/olhasmy/mesto.git"
   },
   "keywords": [
     "Mesto"
@@ -17,9 +17,9 @@
   "author": "Olga Smirnova",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Gonzoooo/mesto/issues"
+    "url": "https://github.com/olhasmy/mesto/issues"
   },
-  "homepage": "https://github.com/Gonzoooo/mesto#readme",
+  "homepage": "https://github.com/olhasmy/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
